@@ -14,7 +14,9 @@ public class MainCharacter : MonoBehaviour
     public Animator animator;
     public float GravityForce = 2;
     public ParticleSystem JumpParticles;
+    public ParticleSystem CollisionParticles;
     public Transform JumpParticlesTransform;
+    public ShockWaveManager _ShockWaveManager;
     
     
 
@@ -50,6 +52,10 @@ void OnCollisionEnter2D(Collision2D collision)
         if (CameraShake != null)
         CameraShake.ShakeCamera();
     
+        Instantiate(CollisionParticles, collision.contacts[0].point, Quaternion.identity);
+        _ShockWaveManager.CallShockWave();
+
+        Debug.Log(collision.contacts[0].point);
         
         StopLerp();
     }
