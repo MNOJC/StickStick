@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -20,8 +21,8 @@ public class MainCharacter : MonoBehaviour
     
     
 
-private float pressThreshold = 0.2f;
-private float holdThreshold = 0.2f;
+private float pressThreshold = 0.1f;
+private float holdThreshold = 0.1f;
 private float spaceKeyHeldStartTime = 0f;
 private Vector2 NormalVectorCollision;
 private string levelToLoad;
@@ -41,6 +42,7 @@ void OnCollisionEnter2D(Collision2D collision)
 {
     if (collision.gameObject.CompareTag("Wall"))
     {
+        StopLerp();
         rb2D.gravityScale = 0;
         rb2D.velocity = Vector2.zero;
         LastNormalVectorCollision = collision.contacts[0].normal;
@@ -54,10 +56,8 @@ void OnCollisionEnter2D(Collision2D collision)
     
         Instantiate(CollisionParticles, collision.contacts[0].point, Quaternion.identity);
         _ShockWaveManager.CallShockWave();
-
-        Debug.Log(collision.contacts[0].point);
         
-        StopLerp();
+        
     }
 
     if (collision.gameObject.CompareTag("KillZone"))
@@ -102,17 +102,30 @@ void Update()
 }
 
 void OnSpaceKeyPressed()
+
 {
-    
     animator.SetTrigger("Jump");
+    RaycastHit2D HitResult = CheckWallOnDashRaycast2D();
+       
 
-    GameObject closestSlimePiece = GetClosestSlimePiece();
-
-    if (closestSlimePiece != null)
+    if (HitResult.collider.CompareTag("Wall"))
     {
-        lerpCoroutine = StartCoroutine(LerpToPosition(closestSlimePiece.transform.position));
-        Destroy(closestSlimePiece);
-    }
+            lerpCoroutine = StartCoroutine(LerpToPosition(HitResult.point));
+
+
+            Debug.Log("CA TOUCHE");
+        
+    } else
+        {
+            GameObject closestSlimePiece = GetClosestSlimePiece();
+            if (closestSlimePiece != null)
+            {
+                Debug.Log(HitResult.collider);
+                lerpCoroutine = StartCoroutine(LerpToPosition(closestSlimePiece.transform.position));
+                Destroy(closestSlimePiece);
+            }
+        }
+    
 }
 
 void OnSpaceKeyHeld()
@@ -208,6 +221,15 @@ void RestartLevel()
             StopCoroutine(lerpCoroutine);
             lerpCoroutine = null;
         }
+    }
+
+   RaycastHit2D CheckWallOnDashRaycast2D()
+    {
+        Vector2 Direction = GetClosestSlimePiece().transform.position - transform.position;
+        RaycastHit2D HitResult = Physics2D.Raycast(transform.position, Direction);
+        Debug.DrawRay(transform.position, Direction, Color.red, 100.0f);
+
+        return HitResult;
     }
 
 }
