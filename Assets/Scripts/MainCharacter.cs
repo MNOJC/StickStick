@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.Burst.CompilerServices;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -105,22 +106,29 @@ void OnSpaceKeyPressed()
 
 {
     animator.SetTrigger("Jump");
-    RaycastHit2D HitResult = CheckWallOnDashRaycast2D();
-       
+  
 
-    if (HitResult.collider.CompareTag("Wall"))
-    {
-            lerpCoroutine = StartCoroutine(LerpToPosition(HitResult.point));
+        Vector2 Direction = GetClosestSlimePiece().transform.position - transform.position;
+        RaycastHit2D Hit;
 
+        Debug.DrawRay(transform.position, Direction, Color.red, 2.0f);
 
-            Debug.Log("CA TOUCHE");
-        
-    } else
+        if (Hit = Physics2D.Linecast(transform.position, GetClosestSlimePiece().transform.position))
+        {
+            Debug.Log(Hit.collider.tag);
+            if (Hit.collider.CompareTag("Wall"))
+            {
+                
+                lerpCoroutine = StartCoroutine(LerpToPosition(Hit.point));               
+            }
+            
+        }
+        else
         {
             GameObject closestSlimePiece = GetClosestSlimePiece();
+            
             if (closestSlimePiece != null)
             {
-                Debug.Log(HitResult.collider);
                 lerpCoroutine = StartCoroutine(LerpToPosition(closestSlimePiece.transform.position));
                 Destroy(closestSlimePiece);
             }
@@ -209,27 +217,18 @@ void RestartLevel()
             yield return null;
         }
 
-        // Assurez-vous que le joueur est exactement à la position cible à la fin du lerp
+        
         playerTransform.position = targetPosition;
     }
 
     void StopLerp()
     {
-        // Arrêter la coroutine si elle est en cours
+        
         if (lerpCoroutine != null)
         {
             StopCoroutine(lerpCoroutine);
             lerpCoroutine = null;
         }
-    }
-
-   RaycastHit2D CheckWallOnDashRaycast2D()
-    {
-        Vector2 Direction = GetClosestSlimePiece().transform.position - transform.position;
-        RaycastHit2D HitResult = Physics2D.Raycast(transform.position, Direction);
-        Debug.DrawRay(transform.position, Direction, Color.red, 100.0f);
-
-        return HitResult;
     }
 
 }

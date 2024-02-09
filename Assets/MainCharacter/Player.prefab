@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3659703808866371474}
   - component: {fileID: 2516973157727677112}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: RightEye
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -95,7 +95,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7687151268758782696}
   - component: {fileID: 3932229983864713511}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: LeftEye
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -179,7 +179,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3259482672706025815}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: JumpHoldParticle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -213,7 +213,7 @@ GameObject:
   - component: {fileID: 6107055090745115856}
   - component: {fileID: 6469517628403895495}
   - component: {fileID: 6836972411412924862}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Mesh
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -291,7 +291,7 @@ SpriteRenderer:
   m_SpriteSortPoint: 0
 --- !u!96 &6469517628403895495
 TrailRenderer:
-  serializedVersion: 2
+  serializedVersion: 3
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -332,6 +332,7 @@ TrailRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Time: 0.14
+  m_PreviewTimeScale: 1
   m_Parameters:
     serializedVersion: 3
     widthMultiplier: 1
@@ -386,17 +387,21 @@ TrailRenderer:
       atime6: 0
       atime7: 0
       m_Mode: 0
+      m_ColorSpace: -1
       m_NumColorKeys: 2
       m_NumAlphaKeys: 2
     numCornerVertices: 0
     numCapVertices: 0
     alignment: 0
     textureMode: 0
+    textureScale: {x: 1, y: 1}
     shadowBias: 0.5
     generateLightingData: 0
   m_MinVertexDistance: 0.1
+  m_MaskInteraction: 0
   m_Autodestruct: 0
   m_Emitting: 1
+  m_ApplyActiveColorSpace: 0
 --- !u!114 &6836972411412924862
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -421,6 +426,7 @@ MonoBehaviour:
   m_LightCookieSprite: {fileID: 0}
   m_DeprecatedPointLightCookieSprite: {fileID: 0}
   m_LightOrder: 0
+  m_AlphaBlendOnOverlap: 0
   m_OverlapOperation: 0
   m_NormalMapDistance: 3
   m_NormalMapQuality: 2
@@ -487,7 +493,7 @@ GameObject:
   - component: {fileID: 6107055090878058627}
   - component: {fileID: 6107055090878058652}
   - component: {fileID: 390804439420031879}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Player
   m_TagString: Player
   m_Icon: {fileID: 5132851093641282708, guid: 0000000000000000d000000000000000, type: 0}
@@ -528,6 +534,12 @@ Rigidbody2D:
   m_AngularDrag: 0.05
   m_GravityScale: 0
   m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
   m_Interpolate: 1
   m_SleepingMode: 1
   m_CollisionDetection: 1
@@ -554,6 +566,7 @@ MonoBehaviour:
   JumpParticles: {fileID: 436164009203168711, guid: d79c19294206d7945a91b50c98309c84, type: 3}
   CollisionParticles: {fileID: 522717647358487164, guid: 9cddbae0c3427e645aab73166d917482, type: 3}
   JumpParticlesTransform: {fileID: 3259482672706025815}
+  _ShockWaveManager: {fileID: 0}
 --- !u!58 &390804439420031879
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -564,6 +577,25 @@ CircleCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
@@ -580,7 +612,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6107055090990253606}
   - component: {fileID: 3390897063704398165}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: P_Anim
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -605,7 +637,7 @@ Transform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!95 &3390897063704398165
 Animator:
-  serializedVersion: 4
+  serializedVersion: 5
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -622,7 +654,8 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorControllerStateOnDisable: 0
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &6498231494233029940
 GameObject:
   m_ObjectHideFlags: 0
@@ -633,7 +666,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2227328430346947490}
   - component: {fileID: 4083370762033212526}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Pupil
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -717,7 +750,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6145391062764893454}
   - component: {fileID: 131860108904956537}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Pupil
   m_TagString: Untagged
   m_Icon: {fileID: 0}
