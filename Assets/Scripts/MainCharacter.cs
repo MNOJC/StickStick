@@ -22,8 +22,8 @@ public class MainCharacter : MonoBehaviour
     
     
 
-private float pressThreshold = 0.1f;
-private float holdThreshold = 0.1f;
+private float pressThreshold = 0.2f;
+private float holdThreshold = 0.2f;
 private float spaceKeyHeldStartTime = 0f;
 private Vector2 NormalVectorCollision;
 private string levelToLoad;
@@ -76,7 +76,7 @@ void Update()
     }
     if (Input.GetKey(KeyCode.Space)) 
     {
-        if (Time.time - spaceKeyHeldStartTime > holdThreshold && bCanPlayHoldJumpAnim) 
+        if (Time.time - spaceKeyHeldStartTime > holdThreshold && bCanPlayHoldJumpAnim && CheckIfPlayerIsGrounded()) 
         {
             animator.SetBool("JumpHold", true);
             bCanPlayHoldJumpAnim = false;
@@ -107,11 +107,8 @@ void OnSpaceKeyPressed()
 {
     animator.SetTrigger("Jump");
   
-
-        Vector2 Direction = GetClosestSlimePiece().transform.position - transform.position;
         RaycastHit2D Hit;
 
-        Debug.DrawRay(transform.position, Direction, Color.red, 2.0f);
 
         if (Hit = Physics2D.Linecast(transform.position, GetClosestSlimePiece().transform.position))
         {
@@ -146,6 +143,8 @@ void OnSpaceKeyHeld()
 
     rb2D.gravityScale = GravityForce;
 
+    if (CheckIfPlayerIsGrounded())
+    {
     if (LastNormalVectorCollision != new Vector2(0, 0)) {
         rb2D.AddForce(LastNormalVectorCollision * forceMagnitude, ForceMode2D.Impulse);
     } else {
@@ -158,9 +157,8 @@ void OnSpaceKeyHeld()
         animator.SetBool("JumpHold", false);
         
         bCanPlayHoldJumpAnim = true;
-    }  
-    
-    
+    }     
+    }
 }
 
 void ResetSpaceKeyHeldStartTime()
@@ -229,6 +227,17 @@ void RestartLevel()
             StopCoroutine(lerpCoroutine);
             lerpCoroutine = null;
         }
+    }
+
+    bool CheckIfPlayerIsGrounded()
+    {
+        int groundLayerMask = LayerMask.GetMask("Wall");
+
+        Vector2 direction = -LastNormalVectorCollision;
+
+        RaycastHit2D hit = Physics2D.Raycast(transform.position, direction, 1.0f, groundLayerMask);
+        
+        return hit.collider != null;
     }
 
 }
