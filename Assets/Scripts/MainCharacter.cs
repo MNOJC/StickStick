@@ -4,6 +4,7 @@ using Unity.Burst.CompilerServices;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using Cinemachine;
 
 public class MainCharacter : MonoBehaviour
 {
@@ -19,9 +20,12 @@ public class MainCharacter : MonoBehaviour
     public ParticleSystem CollisionParticles;
     public Transform JumpParticlesTransform;
     public ShockWaveManager _ShockWaveManager;
-    
-    
-
+    public CinemachineVirtualCamera virtualCamera;
+    public float zoomFov = 8f;
+    public float defaultOrthoSize = 9f;
+    public float zoomSpeed = 2f;
+        
+[SerializeField] private LineRendererController line;
 private float pressThreshold = 0.2f;
 private float holdThreshold = 0.2f;
 private float spaceKeyHeldStartTime = 0f;
@@ -32,11 +36,13 @@ private float heldDuration = 0f;
 private bool bCanPlayHoldJumpAnim = true;
 private CameraShake CameraShake;
 private Vector2 LastNormalVectorCollision = new Vector2(0, 0);
+private bool bKeyHeld = false;
 
 
 void Start()
 {
     SetPlayerOnStartPoint();
+    SetUpLine(this.transform, GetClosestSlimePiece().transform);
 }
 
 void OnCollisionEnter2D(Collision2D collision)
@@ -65,7 +71,41 @@ void OnCollisionEnter2D(Collision2D collision)
     {
         RestartLevel();
     }
+
+    if (collision.gameObject.CompareTag("SlimePieces"))
+    {
+        collision.gameObject.SetActive(false);
+        GameObject closestSlimePiece = GetClosestSlimePiece();
+
+        if (closestSlimePiece != null)
+        {
+            SetUpLine(this.transform, GetClosestSlimePiece().transform);
+            Destroy(collision.gameObject);
+        } else {
+            line.SetCanRender(false);
+        }
+
+
+        
+    }
 }
+
+void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.CompareTag("DetectionZone"))
+        {
+            Time.timeScale = 0.1f;
+        }
+    }
+
+    void OnTriggerExit2D(Collider2D other)
+    {
+        if (other.CompareTag("DetectionZone"))
+        {
+            Time.timeScale = 1f;
+
+        }
+    }
 
 void Update()
 {
@@ -78,6 +118,8 @@ void Update()
     {
         if (Time.time - spaceKeyHeldStartTime > holdThreshold && bCanPlayHoldJumpAnim && CheckIfPlayerIsGrounded()) 
         {
+            StartCoroutine(ZoomCamera(true));
+            bKeyHeld = true;
             animator.SetBool("JumpHold", true);
             bCanPlayHoldJumpAnim = false;
         }
@@ -91,14 +133,27 @@ void Update()
         {
             OnSpaceKeyPressed();
             ResetSpaceKeyHeldStartTime();
+            StartCoroutine(ZoomCamera(false));
+            bKeyHeld = false;
         }
         else if (heldDuration > holdThreshold)
         {
             OnSpaceKeyHeld();
             ResetSpaceKeyHeldStartTime();
+            StartCoroutine(ZoomCamera(false));
+            bKeyHeld = false;
         }      
         
     }
+
+    GameObject NearestSlimePiece = GetClosestSlimePiece();
+    if (NearestSlimePiece != null)
+    {
+        SetUpLine(this.transform, NearestSlimePiece.transform);
+    }
+
+    
+    
    
 }
 
@@ -106,13 +161,12 @@ void OnSpaceKeyPressed()
 
 {
     animator.SetTrigger("Jump");
-  
         RaycastHit2D Hit;
-
+    
 
         if (Hit = Physics2D.Linecast(transform.position, GetClosestSlimePiece().transform.position))
         {
-            Debug.Log(Hit.collider.tag);
+            
             if (Hit.collider.CompareTag("Wall"))
             {
                 
@@ -127,7 +181,6 @@ void OnSpaceKeyPressed()
             if (closestSlimePiece != null)
             {
                 lerpCoroutine = StartCoroutine(LerpToPosition(closestSlimePiece.transform.position));
-                Destroy(closestSlimePiece);
             }
         }
     
@@ -179,12 +232,15 @@ GameObject GetClosestSlimePiece()
 
     for (int i = 1; i < slimePieces.Length; i++)
     {
+        
         float distance = Vector3.Distance(playerTransform.position, slimePieces[i].transform.position);
 
         if (distance < closestDistance)
-        {
+        {        
             closestSlimePiece = slimePieces[i];
             closestDistance = distance;
+            
+            
         }
     }
 
@@ -201,6 +257,7 @@ void RestartLevel()
 {
     levelToLoad = SceneManager.GetActiveScene().name;
     SceneManager.LoadScene(levelToLoad);
+    SetUpLine(this.transform, GetClosestSlimePiece().transform);
 }
 
  IEnumerator LerpToPosition(Vector3 targetPosition)
@@ -238,6 +295,63 @@ void RestartLevel()
         RaycastHit2D hit = Physics2D.Raycast(transform.position, direction, 1.0f, groundLayerMask);
         
         return hit.collider != null;
+    }
+
+    void SetUpLine(Transform StartPoint, Transform EndPoint)
+    {
+        if (bKeyHeld) 
+        {
+            line.SetCanRender(false); 
+            GameObject[] slimePieces = GameObject.FindGameObjectsWithTag("SlimePieces"); 
+             foreach (GameObject slimePiece in slimePieces)
+             {
+                slimePiece.transform.GetChild(0).gameObject.SetActive(false);
+             }
+        } else {
+
+        HideAllLockParticles();   
+        Transform[] LocalLinePoints = new Transform[] { StartPoint, EndPoint };
+
+        if (line != null && LocalLinePoints.Length > 1)
+        {
+            line.SetUpLine(LocalLinePoints);
+            line.SetCanRender(true);       
+        }
+        
+        }
+        
+    }
+
+    void HideAllLockParticles()
+    {
+        GameObject[] slimePieces = GameObject.FindGameObjectsWithTag("SlimePieces");
+
+        foreach (GameObject slimePiece in slimePieces)
+        {
+            if (GetClosestSlimePiece() != slimePiece)
+            {
+                slimePiece.transform.GetChild(0).gameObject.SetActive(false);
+            } else {
+                slimePiece.transform.GetChild(0).gameObject.SetActive(true);
+            }
+            
+        }
+    }
+
+    IEnumerator ZoomCamera(bool shouldZoom)
+    {
+        float elapsedTime = 0f;
+        float initialSize = virtualCamera.m_Lens.OrthographicSize;
+        float targetSize = shouldZoom ? zoomFov : defaultOrthoSize;
+
+        while (elapsedTime < 1f)
+        {
+            elapsedTime += Time.deltaTime * zoomSpeed;
+            virtualCamera.m_Lens.OrthographicSize = Mathf.Lerp(initialSize, targetSize, elapsedTime);
+            yield return null;
+        }
+
+        virtualCamera.m_Lens.OrthographicSize = targetSize;
     }
 
 }
