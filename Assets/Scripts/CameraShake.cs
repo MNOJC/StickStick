@@ -7,8 +7,8 @@ using System;
 public class CameraShake : MonoBehaviour
 {
     private CinemachineVirtualCamera CinemachineVirtualCamera;
-    private float ShakeIntensity = 0.7f;
-    private float ShakeTime = 0.1f;
+    public float ShakeIntensity = 0.7f;
+    public float ShakeTime = 0.1f;
 
     private float Timer;
     private CinemachineBasicMultiChannelPerlin _cbmcp;

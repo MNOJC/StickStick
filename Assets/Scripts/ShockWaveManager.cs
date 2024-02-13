@@ -23,11 +23,7 @@ public class ShockWaveManager : MonoBehaviour
 
     private void update()
     {
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            Debug.Log("AAAAAAAAAAAAAAAAAAAAAAAA");
-            CallShockWave();
-        }
+    
     }
     private IEnumerator ShockWaveAction(float startValue, float endValue)
     {

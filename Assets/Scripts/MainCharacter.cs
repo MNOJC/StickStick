@@ -43,6 +43,7 @@ void Start()
 {
     SetPlayerOnStartPoint();
     SetUpLine(this.transform, GetClosestSlimePiece().transform);
+    transform.LookAt(GetClosestSlimePiece().transform.position);
 }
 
 void OnCollisionEnter2D(Collision2D collision)
@@ -57,9 +58,7 @@ void OnCollisionEnter2D(Collision2D collision)
         Quaternion targetRotation = Quaternion.FromToRotation(Vector2.up, LastNormalVectorCollision);
         transform.rotation = targetRotation;
 
-        CameraShake = GameObject.FindGameObjectWithTag("VirtualCamera").GetComponent<CameraShake>();
-        if (CameraShake != null)
-        CameraShake.ShakeCamera();
+        ShakeCamera(0.7f, 0.1f);
     
         Instantiate(CollisionParticles, collision.contacts[0].point, Quaternion.identity);
         _ShockWaveManager.CallShockWave();
@@ -69,7 +68,14 @@ void OnCollisionEnter2D(Collision2D collision)
 
     if (collision.gameObject.CompareTag("KillZone"))
     {
-        RestartLevel();
+        StopLerp();
+        rb2D.gravityScale = 0;
+        rb2D.velocity = Vector2.zero;
+        Time.timeScale = 1.0f;
+        ShakeCamera(4f, 1f);
+
+
+        Invoke("RestartLevel", 1f);
     }
 
     if (collision.gameObject.CompareTag("SlimePieces"))
@@ -90,11 +96,13 @@ void OnCollisionEnter2D(Collision2D collision)
     }
 }
 
-void OnTriggerEnter2D(Collider2D other)
+    void OnTriggerEnter2D(Collider2D other)
     {
         if (other.CompareTag("DetectionZone"))
         {
-            Time.timeScale = 0.1f;
+            Debug.Log("Entered Detection Zone");
+            Time.timeScale = 0.05f;
+            StartCoroutine(ZoomCamera(true, 40.0f, 8.0f));            
         }
     }
 
@@ -103,7 +111,7 @@ void OnTriggerEnter2D(Collider2D other)
         if (other.CompareTag("DetectionZone"))
         {
             Time.timeScale = 1f;
-
+            StartCoroutine(ZoomCamera(false, 20f, 9.0f));
         }
     }
 
@@ -118,7 +126,7 @@ void Update()
     {
         if (Time.time - spaceKeyHeldStartTime > holdThreshold && bCanPlayHoldJumpAnim && CheckIfPlayerIsGrounded()) 
         {
-            StartCoroutine(ZoomCamera(true));
+            StartCoroutine(ZoomCamera(true, 2.0f, 8.8f));
             bKeyHeld = true;
             animator.SetBool("JumpHold", true);
             bCanPlayHoldJumpAnim = false;
@@ -133,14 +141,12 @@ void Update()
         {
             OnSpaceKeyPressed();
             ResetSpaceKeyHeldStartTime();
-            StartCoroutine(ZoomCamera(false));
             bKeyHeld = false;
         }
         else if (heldDuration > holdThreshold)
         {
             OnSpaceKeyHeld();
             ResetSpaceKeyHeldStartTime();
-            StartCoroutine(ZoomCamera(false));
             bKeyHeld = false;
         }      
         
@@ -152,8 +158,6 @@ void Update()
         SetUpLine(this.transform, NearestSlimePiece.transform);
     }
 
-    
-    
    
 }
 
@@ -200,8 +204,10 @@ void OnSpaceKeyHeld()
     {
     if (LastNormalVectorCollision != new Vector2(0, 0)) {
         rb2D.AddForce(LastNormalVectorCollision * forceMagnitude, ForceMode2D.Impulse);
+        StartCoroutine(ZoomCamera(false, 2.0f, 9.0f));
     } else {
         rb2D.AddForce(Vector2.up * forceMagnitude, ForceMode2D.Impulse);
+        StartCoroutine(ZoomCamera(false, 2.0f, 9.0f));
         
     }
 
@@ -338,15 +344,16 @@ void RestartLevel()
         }
     }
 
-    IEnumerator ZoomCamera(bool shouldZoom)
+    IEnumerator ZoomCamera(bool shouldZoom, float LocalZoomSpeed, float LocalZoomFov)
     {
+        
         float elapsedTime = 0f;
         float initialSize = virtualCamera.m_Lens.OrthographicSize;
-        float targetSize = shouldZoom ? zoomFov : defaultOrthoSize;
+        float targetSize = shouldZoom ? LocalZoomFov : defaultOrthoSize;
 
         while (elapsedTime < 1f)
         {
-            elapsedTime += Time.deltaTime * zoomSpeed;
+            elapsedTime += Time.deltaTime * LocalZoomSpeed;
             virtualCamera.m_Lens.OrthographicSize = Mathf.Lerp(initialSize, targetSize, elapsedTime);
             yield return null;
         }
@@ -354,4 +361,16 @@ void RestartLevel()
         virtualCamera.m_Lens.OrthographicSize = targetSize;
     }
 
+    void ShakeCamera (float Intensity, float ShakeTime)
+    {
+        CameraShake = GameObject.FindGameObjectWithTag("VirtualCamera").GetComponent<CameraShake>();
+
+            if (CameraShake != null)
+            {
+                CameraShake.ShakeIntensity = Intensity;
+                CameraShake.ShakeTime = ShakeTime;
+                CameraShake.ShakeCamera();
+            }
+
+    }       
 }

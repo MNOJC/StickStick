@@ -85,9 +85,6 @@
             "m_Id": "5e879365066b4d10b8df35dc437ae6dc"
         },
         {
-            "m_Id": "f7425761427647e58c413dfd7aec98de"
-        },
-        {
             "m_Id": "868fdd6c07464196a34aec73c2b62b50"
         },
         {
@@ -104,6 +101,9 @@
         },
         {
             "m_Id": "333996f5404b4dd58fdb7d408ce735bc"
+        },
+        {
+            "m_Id": "36bd8f5904f0446da6830e69a16c9cfb"
         }
     ],
     "m_GroupDatas": [],
@@ -161,6 +161,20 @@
             "m_InputSlot": {
                 "m_Node": {
                     "m_Id": "c18de4b10eb8436fb28c30f6197c04b4"
+                },
+                "m_SlotId": 0
+            }
+        },
+        {
+            "m_OutputSlot": {
+                "m_Node": {
+                    "m_Id": "36bd8f5904f0446da6830e69a16c9cfb"
+                },
+                "m_SlotId": 0
+            },
+            "m_InputSlot": {
+                "m_Node": {
+                    "m_Id": "868fdd6c07464196a34aec73c2b62b50"
                 },
                 "m_SlotId": 0
             }
@@ -416,20 +430,6 @@
                 },
                 "m_SlotId": 1
             }
-        },
-        {
-            "m_OutputSlot": {
-                "m_Node": {
-                    "m_Id": "f7425761427647e58c413dfd7aec98de"
-                },
-                "m_SlotId": 0
-            },
-            "m_InputSlot": {
-                "m_Node": {
-                    "m_Id": "868fdd6c07464196a34aec73c2b62b50"
-                },
-                "m_SlotId": 0
-            }
         }
     ],
     "m_VertexContext": {
@@ -511,7 +511,7 @@
     "hlslDeclarationOverride": 0,
     "m_Hidden": false,
     "m_Value": {
-        "m_SerializedTexture": "{\"texture\":{\"instanceID\":0}}",
+        "m_SerializedTexture": "{\"texture\":{\"fileID\":2800000,\"guid\":\"d2628ae988ab0bd428d20ba37718911d\",\"type\":3}}",
         "m_Guid": ""
     },
     "isMainTexture": false,
@@ -833,6 +833,40 @@
     "m_Property": {
         "m_Id": "98f20412f0504aaab06e6927ca79d80b"
     }
+}
+
+{
+    "m_SGVersion": 0,
+    "m_Type": "UnityEditor.ShaderGraph.ScreenPositionNode",
+    "m_ObjectId": "36bd8f5904f0446da6830e69a16c9cfb",
+    "m_Group": {
+        "m_Id": ""
+    },
+    "m_Name": "Screen Position",
+    "m_DrawState": {
+        "m_Expanded": true,
+        "m_Position": {
+            "serializedVersion": "2",
+            "x": -181.6999969482422,
+            "y": -699.2000732421875,
+            "width": 0.0,
+            "height": 0.0
+        }
+    },
+    "m_Slots": [
+        {
+            "m_Id": "72acd841798f44ef9d1b500c909b033b"
+        }
+    ],
+    "synonyms": [],
+    "m_Precision": 0,
+    "m_PreviewExpanded": true,
+    "m_DismissedVersion": 0,
+    "m_PreviewMode": 0,
+    "m_CustomColors": {
+        "m_SerializableColors": []
+    },
+    "m_ScreenSpaceType": 0
 }
 
 {
@@ -1618,7 +1652,7 @@
 {
     "m_SGVersion": 0,
     "m_Type": "UnityEditor.ShaderGraph.Vector4MaterialSlot",
-    "m_ObjectId": "740b720c7ecf4906a099ed61ecd4a249",
+    "m_ObjectId": "72acd841798f44ef9d1b500c909b033b",
     "m_Id": 0,
     "m_DisplayName": "Out",
     "m_SlotType": 1,
@@ -2030,7 +2064,7 @@
     "m_RefNameGeneratedByDisplayName": "WaveDistanceFromCenter",
     "m_DefaultReferenceName": "_WaveDistanceFromCenter",
     "m_OverrideReferenceName": "",
-    "m_GeneratePropertyBlock": true,
+    "m_GeneratePropertyBlock": false,
     "m_UseCustomSlotLabel": false,
     "m_CustomSlotLabel": "",
     "m_DismissedVersion": 0,
@@ -3041,43 +3075,5 @@
     "m_Property": {
         "m_Id": "01284db47d8646808142d5787888fe35"
     }
-}
-
-{
-    "m_SGVersion": 0,
-    "m_Type": "UnityEditor.ShaderGraph.UVNode",
-    "m_ObjectId": "f7425761427647e58c413dfd7aec98de",
-    "m_Group": {
-        "m_Id": ""
-    },
-    "m_Name": "UV",
-    "m_DrawState": {
-        "m_Expanded": true,
-        "m_Position": {
-            "serializedVersion": "2",
-            "x": -280.0,
-            "y": -850.0000610351563,
-            "width": 208.0,
-            "height": 313.0
-        }
-    },
-    "m_Slots": [
-        {
-            "m_Id": "740b720c7ecf4906a099ed61ecd4a249"
-        }
-    ],
-    "synonyms": [
-        "texcoords",
-        "coords",
-        "coordinates"
-    ],
-    "m_Precision": 0,
-    "m_PreviewExpanded": true,
-    "m_DismissedVersion": 0,
-    "m_PreviewMode": 0,
-    "m_CustomColors": {
-        "m_SerializableColors": []
-    },
-    "m_OutputChannel": 0
 }
 
