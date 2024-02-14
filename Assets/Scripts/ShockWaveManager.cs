@@ -10,6 +10,11 @@ public class ShockWaveManager : MonoBehaviour
     private Material material;
     private static int _waveDistanceFromCenter = Shader.PropertyToID("_WaveDistanceFromCenter");
 
+    private void Start()
+    {
+        
+    }
+
     private void Awake()
     {
         material = GetComponent<SpriteRenderer>().material;

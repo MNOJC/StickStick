@@ -35,6 +35,7 @@ public class CameraShake : MonoBehaviour
 
     void Start()
     {
+        
         StopShake();
     }
     void Update()

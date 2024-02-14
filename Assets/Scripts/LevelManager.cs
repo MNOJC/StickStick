@@ -5,13 +5,25 @@ using UnityEngine.SceneManagement;
 
 public class LevelManager : MonoBehaviour
 {
-     public string[] levelNames;
-
+    public string[] levelNames;
+    public MainCharacter mainCharacter;
+    private static LevelManager instance;
     private int currentLevelIndex = 0;
 
     void Start()
     {
         DontDestroyOnLoad(gameObject);
+
+        if (instance != null)
+        {
+            Destroy(gameObject);
+        }
+        else
+        {
+            // Sinon, fait de cette instance l'instance unique
+            instance = this;
+            DontDestroyOnLoad(gameObject);
+        }
     }
 
     public void LoadCurrentLevel()
@@ -19,6 +31,8 @@ public class LevelManager : MonoBehaviour
         if (currentLevelIndex < levelNames.Length)
         {
             SceneManager.LoadScene(levelNames[currentLevelIndex]);
+            
+        
         }
         else
         {

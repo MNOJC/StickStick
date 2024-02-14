@@ -24,6 +24,7 @@ public class MainCharacter : MonoBehaviour
     public float zoomFov = 8f;
     public float defaultOrthoSize = 9f;
     public float zoomSpeed = 2f;
+    public Collider2D PlayerCollider;
         
 [SerializeField] private LineRendererController line;
 private float pressThreshold = 0.2f;
@@ -37,13 +38,15 @@ private bool bCanPlayHoldJumpAnim = true;
 private CameraShake CameraShake;
 private Vector2 LastNormalVectorCollision = new Vector2(0, 0);
 private bool bKeyHeld = false;
+private bool bPlayerDead = false;
 
 
 void Start()
 {
     SetPlayerOnStartPoint();
     SetUpLine(this.transform, GetClosestSlimePiece().transform);
-    transform.LookAt(GetClosestSlimePiece().transform.position);
+    
+    
 }
 
 void OnCollisionEnter2D(Collision2D collision)
@@ -68,6 +71,9 @@ void OnCollisionEnter2D(Collision2D collision)
 
     if (collision.gameObject.CompareTag("KillZone"))
     {
+        PlayerCollider.enabled = false;
+        animator.SetTrigger("Dead");
+        bPlayerDead = true;
         StopLerp();
         rb2D.gravityScale = 0;
         rb2D.velocity = Vector2.zero;
@@ -100,7 +106,6 @@ void OnCollisionEnter2D(Collision2D collision)
     {
         if (other.CompareTag("DetectionZone"))
         {
-            Debug.Log("Entered Detection Zone");
             Time.timeScale = 0.05f;
             StartCoroutine(ZoomCamera(true, 40.0f, 8.0f));            
         }
@@ -108,7 +113,7 @@ void OnCollisionEnter2D(Collision2D collision)
 
     void OnTriggerExit2D(Collider2D other)
     {
-        if (other.CompareTag("DetectionZone"))
+        if (other.CompareTag("DetectionZone") && !bPlayerDead)
         {
             Time.timeScale = 1f;
             StartCoroutine(ZoomCamera(false, 20f, 9.0f));
@@ -167,8 +172,11 @@ void OnSpaceKeyPressed()
     animator.SetTrigger("Jump");
         RaycastHit2D Hit;
     
-
-        if (Hit = Physics2D.Linecast(transform.position, GetClosestSlimePiece().transform.position))
+        GameObject closestSlimePiece = GetClosestSlimePiece();
+        
+        if (closestSlimePiece != null)
+        {
+        if (Hit = Physics2D.Linecast(transform.position, closestSlimePiece.transform.position))
         {
             
             if (Hit.collider.CompareTag("Wall"))
@@ -180,12 +188,12 @@ void OnSpaceKeyPressed()
         }
         else
         {
-            GameObject closestSlimePiece = GetClosestSlimePiece();
             
             if (closestSlimePiece != null)
             {
                 lerpCoroutine = StartCoroutine(LerpToPosition(closestSlimePiece.transform.position));
             }
+        }
         }
     
 }
@@ -254,7 +262,7 @@ GameObject GetClosestSlimePiece()
 }
 
 
-void SetPlayerOnStartPoint()
+public void SetPlayerOnStartPoint()
 {
     playerTransform.position = GameObject.FindGameObjectWithTag("StartPoint").transform.position;
 }
@@ -263,7 +271,7 @@ void RestartLevel()
 {
     levelToLoad = SceneManager.GetActiveScene().name;
     SceneManager.LoadScene(levelToLoad);
-    SetUpLine(this.transform, GetClosestSlimePiece().transform);
+    
 }
 
  IEnumerator LerpToPosition(Vector3 targetPosition)

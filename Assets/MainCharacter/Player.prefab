@@ -367,9 +367,10 @@ MonoBehaviour:
   JumpParticlesTransform: {fileID: 3259482672706025815}
   _ShockWaveManager: {fileID: 0}
   virtualCamera: {fileID: 0}
-  zoomFov: 8
+  zoomFov: 8.8
   defaultOrthoSize: 9
-  zoomSpeed: 2
+  zoomSpeed: 10
+  PlayerCollider: {fileID: 390804439420031879}
   line: {fileID: 0}
 --- !u!58 &390804439420031879
 CircleCollider2D:
