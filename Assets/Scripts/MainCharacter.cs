@@ -39,13 +39,13 @@ private CameraShake CameraShake;
 private Vector2 LastNormalVectorCollision = new Vector2(0, 0);
 private bool bKeyHeld = false;
 private bool bPlayerDead = false;
+private bool bCanDash = true;
 
 
 void Start()
 {
     SetPlayerOnStartPoint();
     SetUpLine(this.transform, GetClosestSlimePiece().transform);
-    
     
 }
 
@@ -57,6 +57,8 @@ void OnCollisionEnter2D(Collision2D collision)
         rb2D.gravityScale = 0;
         rb2D.velocity = Vector2.zero;
         LastNormalVectorCollision = collision.contacts[0].normal;
+
+        bCanDash = true;
 
         Quaternion targetRotation = Quaternion.FromToRotation(Vector2.up, LastNormalVectorCollision);
         transform.rotation = targetRotation;
@@ -79,13 +81,14 @@ void OnCollisionEnter2D(Collision2D collision)
         rb2D.velocity = Vector2.zero;
         Time.timeScale = 1.0f;
         ShakeCamera(4f, 1f);
-
+        bCanDash = true;
 
         Invoke("RestartLevel", 1f);
     }
 
     if (collision.gameObject.CompareTag("SlimePieces"))
     {
+        bCanDash = true;
         collision.gameObject.SetActive(false);
         GameObject closestSlimePiece = GetClosestSlimePiece();
 
@@ -106,7 +109,7 @@ void OnCollisionEnter2D(Collision2D collision)
     {
         if (other.CompareTag("DetectionZone"))
         {
-            Time.timeScale = 0.05f;
+            Time.timeScale = 0.1f;
             StartCoroutine(ZoomCamera(true, 40.0f, 8.0f));            
         }
     }
@@ -144,6 +147,7 @@ void Update()
 
         if (heldDuration < pressThreshold)
         {
+            if (bCanDash)
             OnSpaceKeyPressed();
             ResetSpaceKeyHeldStartTime();
             bKeyHeld = false;
@@ -169,7 +173,8 @@ void Update()
 void OnSpaceKeyPressed()
 
 {
-    animator.SetTrigger("Jump");
+        bCanDash = false;
+        animator.SetTrigger("Jump");
         RaycastHit2D Hit;
     
         GameObject closestSlimePiece = GetClosestSlimePiece();
@@ -179,21 +184,25 @@ void OnSpaceKeyPressed()
         if (Hit = Physics2D.Linecast(transform.position, closestSlimePiece.transform.position))
         {
             
+            
             if (Hit.collider.CompareTag("Wall"))
             {
                 
-                lerpCoroutine = StartCoroutine(LerpToPosition(Hit.point));               
-            }
-            
-        }
-        else
-        {
+                lerpCoroutine = StartCoroutine(LerpToPosition(Hit.point));
+                             
+            } 
+        } else {
             
             if (closestSlimePiece != null)
             {
-                lerpCoroutine = StartCoroutine(LerpToPosition(closestSlimePiece.transform.position));
+               
+                StartCoroutine(LerpToPosition(closestSlimePiece.transform.position));
+                
             }
+            
         }
+        
+        
         }
     
 }
@@ -274,20 +283,27 @@ void RestartLevel()
     
 }
 
- IEnumerator LerpToPosition(Vector3 targetPosition)
+IEnumerator LerpToPosition(Vector3 targetPosition)
     {
-        float elapsedTime = 0f;
+        Debug.Log(targetPosition);
+        float duration = 0.2f;
+        float currentTime = 0f;
+
         Vector3 initialPosition = playerTransform.position;
 
-        while (elapsedTime < 1f)
+        while (currentTime < duration)
         {
-            playerTransform.position = Vector3.Lerp(initialPosition, targetPosition, elapsedTime);
-            elapsedTime += Time.deltaTime * lerpSpeed;
+            float t = currentTime / duration;
+            playerTransform.position = Vector3.Lerp(initialPosition, targetPosition, t);
+
+            currentTime += Time.deltaTime;
             yield return null;
         }
 
-        
-        playerTransform.position = targetPosition;
+        Debug.Log("Setting final position");
+        playerTransform.position = targetPosition;  
+        Debug.Log("Final position set");
+
     }
 
     void StopLerp()
