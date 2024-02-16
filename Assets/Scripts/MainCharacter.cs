@@ -41,6 +41,8 @@ private bool bKeyHeld = false;
 private bool bPlayerDead = false;
 private bool bCanDash = true;
 
+private bool bCanStopLerp;
+
 
 void Start()
 {
@@ -73,6 +75,7 @@ void OnCollisionEnter2D(Collision2D collision)
 
     if (collision.gameObject.CompareTag("KillZone"))
     {
+        bCanStopLerp = true;
         PlayerCollider.enabled = false;
         animator.SetTrigger("Dead");
         bPlayerDead = true;
@@ -81,7 +84,7 @@ void OnCollisionEnter2D(Collision2D collision)
         rb2D.velocity = Vector2.zero;
         Time.timeScale = 1.0f;
         ShakeCamera(4f, 1f);
-        bCanDash = true;
+        bCanDash = false;
 
         Invoke("RestartLevel", 1f);
     }
@@ -184,20 +187,19 @@ void OnSpaceKeyPressed()
         if (Hit = Physics2D.Linecast(transform.position, closestSlimePiece.transform.position))
         {
             
-            
             if (Hit.collider.CompareTag("Wall"))
             {
-                
                 lerpCoroutine = StartCoroutine(LerpToPosition(Hit.point));
+                bCanStopLerp = true;
                              
-            } 
+            }
+             
         } else {
             
             if (closestSlimePiece != null)
             {
-               
-                StartCoroutine(LerpToPosition(closestSlimePiece.transform.position));
-                
+                lerpCoroutine = StartCoroutine(LerpToPosition(closestSlimePiece.transform.position));
+                bCanStopLerp = false;
             }
             
         }
@@ -309,7 +311,7 @@ IEnumerator LerpToPosition(Vector3 targetPosition)
     void StopLerp()
     {
         
-        if (lerpCoroutine != null)
+        if (lerpCoroutine != null && bCanStopLerp)
         {
             StopCoroutine(lerpCoroutine);
             lerpCoroutine = null;
