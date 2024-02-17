@@ -11,6 +11,7 @@ TagManager:
   - VirtualCamera
   - DetectionZone
   - Score
+  - GoldenFork
   layers:
   - Default
   - TransparentFX

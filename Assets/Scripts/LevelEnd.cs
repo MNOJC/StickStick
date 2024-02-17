@@ -22,7 +22,7 @@ void Start() {
         {
             levelFinishedTime = timer.timer;
             SetupLevelScore();
-            //levelManager.LoadNextLevel();
+            
         }
     }
 void SetupLevelScore()
@@ -40,6 +40,14 @@ void SetupLevelScore()
     score.timeThirdStar = levelScoreData.timeThirdStar;
 
     score.SetupScore(levelFinishedTime);  
+
+    Invoke("LoadNextLevel", 3f);
     
 }
+
+private void LoadNextLevel()
+{
+    levelManager.LoadNextLevel();
+}
+
 }

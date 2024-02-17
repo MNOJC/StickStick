@@ -40,6 +40,7 @@ private Vector2 LastNormalVectorCollision = new Vector2(0, 0);
 private bool bKeyHeld = false;
 private bool bPlayerDead = false;
 private bool bCanDash = true;
+private bool bCanJump = true;
 
 private bool bCanStopLerp;
 
@@ -55,9 +56,8 @@ void OnCollisionEnter2D(Collision2D collision)
 {
     if (collision.gameObject.CompareTag("Wall"))
     {
-        StopLerp();
-        rb2D.gravityScale = 0;
-        rb2D.velocity = Vector2.zero;
+        
+        StopPlayer();
         LastNormalVectorCollision = collision.contacts[0].normal;
 
         bCanDash = true;
@@ -69,6 +69,8 @@ void OnCollisionEnter2D(Collision2D collision)
     
         Instantiate(CollisionParticles, collision.contacts[0].point, Quaternion.identity);
         _ShockWaveManager.CallShockWave();
+        Debug.Log("Collision with wall");
+        
         
         
     }
@@ -80,8 +82,9 @@ void OnCollisionEnter2D(Collision2D collision)
         animator.SetTrigger("Dead");
         bPlayerDead = true;
         StopLerp();
-        rb2D.gravityScale = 0;
-        rb2D.velocity = Vector2.zero;
+
+        StopPlayer();
+
         Time.timeScale = 1.0f;
         ShakeCamera(4f, 1f);
         bCanDash = false;
@@ -105,6 +108,12 @@ void OnCollisionEnter2D(Collision2D collision)
 
 
         
+    }
+    if (collision.gameObject.CompareTag("GoldenFork"))
+    {
+       StopPlayer();
+       bCanDash = false;
+       bCanJump = false;
     }
 }
 
@@ -157,6 +166,7 @@ void Update()
         }
         else if (heldDuration > holdThreshold)
         {
+            if (bCanJump)
             OnSpaceKeyHeld();
             ResetSpaceKeyHeldStartTime();
             bKeyHeld = false;
@@ -393,5 +403,11 @@ IEnumerator LerpToPosition(Vector3 targetPosition)
                 CameraShake.ShakeCamera();
             }
 
-    }       
+    }  
+
+    void StopPlayer()
+    {
+        rb2D.velocity = Vector2.zero;
+        rb2D.gravityScale = 0;
+    }     
 }
