@@ -287,7 +287,6 @@ void RestartLevel()
 
 IEnumerator LerpToPosition(Vector3 targetPosition)
     {
-        Debug.Log(targetPosition);
         float duration = 0.2f;
         float currentTime = 0f;
 
@@ -301,11 +300,7 @@ IEnumerator LerpToPosition(Vector3 targetPosition)
             currentTime += Time.deltaTime;
             yield return null;
         }
-
-        Debug.Log("Setting final position");
         playerTransform.position = targetPosition;  
-        Debug.Log("Final position set");
-
     }
 
     void StopLerp()

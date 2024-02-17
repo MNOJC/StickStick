@@ -10,6 +10,7 @@ TagManager:
   - KillZone
   - VirtualCamera
   - DetectionZone
+  - Score
   layers:
   - Default
   - TransparentFX

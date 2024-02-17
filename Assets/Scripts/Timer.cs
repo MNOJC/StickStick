@@ -5,7 +5,7 @@ using TMPro;
 
 public class Timer : MonoBehaviour
 {
-    private float timer;
+    public float timer;
 
     [SerializeField]
     private TextMeshProUGUI firstMinute;
@@ -24,7 +24,6 @@ public class Timer : MonoBehaviour
 
     private void Start()
     {
-        DontDestroyOnLoad(gameObject);
         ResetTimer();
     }
 
@@ -50,5 +49,13 @@ public class Timer : MonoBehaviour
         secondMinute.text = currentTime[1].ToString();
         firstSecond.text = currentTime[2].ToString();
         secondSecond.text = currentTime[3].ToString();
+    }
+
+    private void CheckAnotherInstanceExist()    
+    {
+        if (FindObjectsOfType(GetType()).Length > 1)
+        {
+            Destroy(gameObject);
+        }
     }
 }
