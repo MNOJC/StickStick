@@ -8,6 +8,9 @@ public class Score : MonoBehaviour
     public float timeFirstStar;
     public float timeSecondStar;
     public float timeThirdStar;
+    public ParticleSystem StarParticle;
+
+    public Animator animator;
 
     [SerializeField]
     private GameObject FirstStarImage;
@@ -29,35 +32,36 @@ public class Score : MonoBehaviour
 
     public void SetupScore(float timeFinishedLevel)
     {
-        if (timeFinishedLevel <= timeThirdStar)
+        animator.SetTrigger("Score");
+
+        if (timeFinishedLevel <= timeFirstStar)
         {
-            FirstStarImage.SetActive(true);
-            SecondStarImage.SetActive(true);
-            ThirdStarImage.SetActive(true);
+            StartCoroutine(WaitForSeconds(1f, FirstStarImage, "FirstStar"));
         }
-        else if (timeFinishedLevel <= timeSecondStar)
+         if (timeFinishedLevel <= timeSecondStar)
         {
-            FirstStarImage.SetActive(true);
-            SecondStarImage.SetActive(true);
-            ThirdStarImage.SetActive(false);
+            StartCoroutine(WaitForSeconds(2f, SecondStarImage, "SecondStar"));
         }
-        else if (timeFinishedLevel <= timeFirstStar)
+         if (timeFinishedLevel <= timeThirdStar)
         {
-            FirstStarImage.SetActive(true);
-            SecondStarImage.SetActive(false);
-            ThirdStarImage.SetActive(false);
-        }
-        else
-        {
-            FirstStarImage.SetActive(false);
-            SecondStarImage.SetActive(false);
-            ThirdStarImage.SetActive(false);
+            StartCoroutine(WaitForSeconds(3f, ThirdStarImage, "ThirdStar"));
         }
 
-        FirstText.text = timeFirstStar.ToString();
-        SecondText.text = timeSecondStar.ToString();
-        ThirdText.text = timeThirdStar.ToString();
+        FirstText.text = "< " + timeFirstStar.ToString() + "s";
+        SecondText.text = "< " + timeSecondStar.ToString() + "s";
+        ThirdText.text = "< " + timeThirdStar.ToString() + "s";
     }         
 
-        
+        IEnumerator WaitForSeconds(float time, GameObject starImage, string star)
+        {
+            yield return new WaitForSeconds(time);
+            starImage.SetActive(true);
+            animator.SetTrigger(star);
+            Debug.Log("Star");
+
+            
+            yield return new WaitForSeconds(0.7f);
+            Instantiate(StarParticle, starImage.transform.position, Quaternion.identity);
+
+        }
 }   

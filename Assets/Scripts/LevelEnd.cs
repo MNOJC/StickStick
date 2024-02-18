@@ -29,7 +29,7 @@ void SetupLevelScore()
 {
     GameObject scoreCanva = GameObject.FindGameObjectWithTag("Score");
     GameObject childScoreCanva = scoreCanva.transform.GetChild(0).gameObject;
-    childScoreCanva.SetActive(true);
+    
 
     LevelScoreData levelScoreData = FindObjectOfType<LevelScoreData>();
     Score score = FindObjectOfType<Score>();
@@ -39,9 +39,10 @@ void SetupLevelScore()
     score.timeSecondStar = levelScoreData.timeSecondStar;
     score.timeThirdStar = levelScoreData.timeThirdStar;
 
+    childScoreCanva.SetActive(true);
     score.SetupScore(levelFinishedTime);  
 
-    Invoke("LoadNextLevel", 3f);
+    Invoke("LoadNextLevel", 10f);
     
 }
 
