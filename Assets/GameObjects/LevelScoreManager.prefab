@@ -47,3 +47,4 @@ MonoBehaviour:
   timeFirstStar: 0
   timeSecondStar: 0
   timeThirdStar: 0
+  levelName: Level - 1

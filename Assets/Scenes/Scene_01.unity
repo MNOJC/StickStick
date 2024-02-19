@@ -1358,6 +1358,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _shockWaveTime: 0.75
+--- !u!114 &816485102 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2788786296310165126, guid: 436452d9013833a43bd2a4016436f92a, type: 3}
+  m_PrefabInstance: {fileID: 514317136135471057}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &822936209 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 6107055090878058652, guid: 9ff01292832573a429d7a8583697086a, type: 3}
@@ -1564,6 +1575,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ShakeIntensity: 0.7
   ShakeTime: 0.1
+--- !u!114 &939420457 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5619963859723381323, guid: 5ecc0cc7bd3a9614fae0184966f81c5f, type: 3}
+  m_PrefabInstance: {fileID: 3679304081673069638}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 589116a5dd3a4c7419ccf1dfc0df51b6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &943461212
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3244,6 +3266,14 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 760385228297504939, guid: 436452d9013833a43bd2a4016436f92a, type: 3}
+      propertyPath: data
+      value: 
+      objectReference: {fileID: 939420457}
+    - target: {fileID: 760385228297504939, guid: 436452d9013833a43bd2a4016436f92a, type: 3}
+      propertyPath: name
+      value: 
+      objectReference: {fileID: 816485102}
+    - target: {fileID: 760385228297504939, guid: 436452d9013833a43bd2a4016436f92a, type: 3}
       propertyPath: timer
       value: 
       objectReference: {fileID: 476624083}
@@ -3391,10 +3421,6 @@ PrefabInstance:
     - target: {fileID: 2143397382924645116, guid: 5ecc0cc7bd3a9614fae0184966f81c5f, type: 3}
       propertyPath: m_Name
       value: LevelScoreManager
-      objectReference: {fileID: 0}
-    - target: {fileID: 5619963859723381323, guid: 5ecc0cc7bd3a9614fae0184966f81c5f, type: 3}
-      propertyPath: levelName
-      value: Level - 1
       objectReference: {fileID: 0}
     - target: {fileID: 5619963859723381323, guid: 5ecc0cc7bd3a9614fae0184966f81c5f, type: 3}
       propertyPath: timeFirstStar
