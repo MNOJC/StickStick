@@ -12,4 +12,7 @@ public class LevelScoreData : MonoBehaviour
 
     [SerializeField]
     public float timeThirdStar;
+
+    [SerializeField]
+    public string levelName;
 }

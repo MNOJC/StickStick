@@ -47,6 +47,7 @@ private bool bCanStopLerp;
 
 void Start()
 {
+    DisableInput(true);
     SetPlayerOnStartPoint();
     SetUpLine(this.transform, GetClosestSlimePiece().transform);
     
@@ -410,4 +411,20 @@ IEnumerator LerpToPosition(Vector3 targetPosition)
         rb2D.velocity = Vector2.zero;
         rb2D.gravityScale = 0;
     }     
+
+    public void DisableInput(bool bDisable)
+    {
+        if (bDisable)
+        {
+            rb2D.velocity = Vector2.zero;
+            rb2D.gravityScale = 0;
+            bCanDash = false;
+            bCanJump = false;
+            Debug.Log("Input Disabled");
+        } else {
+            rb2D.gravityScale = GravityForce;
+            bCanDash = true;
+            bCanJump = true;
+        }
+    }
 }

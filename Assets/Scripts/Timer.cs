@@ -33,7 +33,7 @@ public class Timer : MonoBehaviour
         UpdateTimerDisplay(timer);  
     }
 
-    private void ResetTimer()
+    public void ResetTimer()
     {
         timer = 0;
     }
