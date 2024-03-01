@@ -39,14 +39,20 @@ private CameraShake CameraShake;
 private Vector2 LastNormalVectorCollision = new Vector2(0, 0);
 private bool bKeyHeld = false;
 private bool bPlayerDead = false;
-private bool bCanDash = true;
-private bool bCanJump = true;
+private bool bCanDash = false;
+private bool bCanJump = false;
+
+public bool bGameStart = false;
 
 private bool bCanStopLerp;
 
+    [SerializeField]
+    private Timer timer;
 
-void Start()
+
+    void Start()
 {
+    
     DisableInput(true);
     SetPlayerOnStartPoint();
     SetUpLine(this.transform, GetClosestSlimePiece().transform);
@@ -140,6 +146,7 @@ void Update()
 {
     if (Input.GetKeyDown(KeyCode.Space))
     {
+        timer.StartTimer();
         spaceKeyHeldStartTime = Time.time;
         
     }
@@ -157,17 +164,17 @@ void Update()
     if (Input.GetKeyUp(KeyCode.Space))
     {
         heldDuration = Time.time - spaceKeyHeldStartTime;
-
+                   
         if (heldDuration < pressThreshold)
         {
-            if (bCanDash)
+            if (bCanDash && bGameStart)
             OnSpaceKeyPressed();
             ResetSpaceKeyHeldStartTime();
             bKeyHeld = false;
         }
         else if (heldDuration > holdThreshold)
         {
-            if (bCanJump)
+            if (bCanJump && bGameStart)
             OnSpaceKeyHeld();
             ResetSpaceKeyHeldStartTime();
             bKeyHeld = false;
@@ -416,11 +423,8 @@ IEnumerator LerpToPosition(Vector3 targetPosition)
     {
         if (bDisable)
         {
-            rb2D.velocity = Vector2.zero;
-            rb2D.gravityScale = 0;
             bCanDash = false;
             bCanJump = false;
-            Debug.Log("Input Disabled");
         } else {
             rb2D.gravityScale = GravityForce;
             bCanDash = true;

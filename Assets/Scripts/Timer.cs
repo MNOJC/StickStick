@@ -6,6 +6,7 @@ using TMPro;
 public class Timer : MonoBehaviour
 {
     public float timer;
+    private bool bPauseTimer = true;
 
     [SerializeField]
     private TextMeshProUGUI firstMinute;
@@ -29,8 +30,12 @@ public class Timer : MonoBehaviour
 
     private void Update()
     {
-        timer += Time.deltaTime;  
-        UpdateTimerDisplay(timer);  
+        if(!bPauseTimer)
+        {
+            timer += Time.deltaTime;
+            UpdateTimerDisplay(timer);
+        }
+          
     }
 
     public void ResetTimer()
@@ -50,12 +55,19 @@ public class Timer : MonoBehaviour
         firstSecond.text = currentTime[2].ToString();
         secondSecond.text = currentTime[3].ToString();
     }
-
-    private void CheckAnotherInstanceExist()    
+    
+    public void PauseTimer()
     {
-        if (FindObjectsOfType(GetType()).Length > 1)
-        {
-            Destroy(gameObject);
-        }
+        bPauseTimer = true;
+    }
+
+    public void StartTimer()
+    {
+        bPauseTimer = false;
+    }
+
+    public void ResumeTimer()
+    {
+        bPauseTimer = false;
     }
 }

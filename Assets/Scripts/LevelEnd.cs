@@ -22,6 +22,7 @@ void Start() {
         {
             levelFinishedTime = timer.timer;
             SetupLevelScore();
+            timer.PauseTimer();
             
         }
     }
@@ -42,7 +43,7 @@ void SetupLevelScore()
     childScoreCanva.SetActive(true);
     score.SetupScore(levelFinishedTime);  
 
-    Invoke("LoadNextLevel", 10f);
+    Invoke("LoadNextLevel", 6.0f);
     
 }
 

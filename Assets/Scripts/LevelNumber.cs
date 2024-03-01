@@ -31,5 +31,6 @@ public class LevelNumber : MonoBehaviour
     {
         timer.ResetTimer();
         player.DisableInput(false);
+        player.bGameStart = true;
     }
 }
