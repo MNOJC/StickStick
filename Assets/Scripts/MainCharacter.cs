@@ -146,7 +146,7 @@ void Update()
 {
     if (Input.GetKeyDown(KeyCode.Space))
     {
-        timer.StartTimer();
+        
         spaceKeyHeldStartTime = Time.time;
         
     }
@@ -194,6 +194,8 @@ void Update()
 void OnSpaceKeyPressed()
 
 {
+
+        timer.StartTimer();
         bCanDash = false;
         animator.SetTrigger("Jump");
         RaycastHit2D Hit;
@@ -229,6 +231,7 @@ void OnSpaceKeyPressed()
 
 void OnSpaceKeyHeld()
 {
+    timer.StartTimer();
     Quaternion targetRotation = Quaternion.FromToRotation(Vector2.up, LastNormalVectorCollision);
     Instantiate(JumpParticles, JumpParticlesTransform.position, targetRotation);
     

@@ -14,7 +14,7 @@ public class LineRendererController : MonoBehaviour
 
     private int animationStep;
     [SerializeField]
-    private float fps = 30f;
+    private float fps = 60f;
 
     private float fpsCounter;
 

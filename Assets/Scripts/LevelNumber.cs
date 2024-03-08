@@ -15,14 +15,14 @@ public class LevelNumber : MonoBehaviour
     private MainCharacter player;
 
     [SerializeField]
-    private TextMeshProUGUI name;
+    private TextMeshProUGUI number;
 
     [SerializeField]
     private LevelScoreData data;
 
     void Start()
     {
-        name.text = data.levelName;
+        number.text = data.levelName;
         animator.SetTrigger("LevelName");
         Invoke("StartLevel",3f);
     }
