@@ -23,13 +23,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6012285574226964137}
-  serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: -0.5, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 6107055090878058626}
+  m_RootOrder: -2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &6107055090745115858
 GameObject:
@@ -57,13 +57,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6107055090745115858}
-  serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 6107055090990253606}
+  m_RootOrder: -2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &6107055090745115856
 SpriteRenderer:
@@ -263,6 +263,11 @@ MonoBehaviour:
   m_ShadowIntensity: 0.75
   m_ShadowVolumeIntensityEnabled: 0
   m_ShadowVolumeIntensity: 0.75
+  m_Vertices:
+  - position: {x: 0, y: 0, z: 0}
+    color: {r: 0, g: 0, b: 0, a: 0}
+    uv: {x: 0, y: 0}
+  m_Triangles: 0000
   m_LocalBounds:
     m_Center: {x: 0, y: -0.00000011920929, z: 0}
     m_Extent: {x: 0.9985302, y: 0.99853027, z: 0}
@@ -306,7 +311,6 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6107055090878058653}
-  serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
@@ -315,6 +319,7 @@ Transform:
   - {fileID: 6107055090990253606}
   - {fileID: 3259482672706025815}
   m_Father: {fileID: 0}
+  m_RootOrder: -2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!50 &6107055090878058627
 Rigidbody2D:
@@ -357,11 +362,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerTransform: {fileID: 6107055090878058626}
   rb2D: {fileID: 6107055090878058627}
-  lerpSpeed: 7
-  maxForce: 15
+  lerpSpeed: 17
+  maxForce: 27
   maxHoldDuration: 0.5
   animator: {fileID: 3390897063704398165}
-  GravityForce: 2.5
+  GravityForce: 8
   JumpParticles: {fileID: 436164009203168711, guid: d79c19294206d7945a91b50c98309c84, type: 3}
   CollisionParticles: {fileID: 522717647358487164, guid: 9cddbae0c3427e645aab73166d917482, type: 3}
   JumpParticlesTransform: {fileID: 3259482672706025815}
@@ -372,6 +377,8 @@ MonoBehaviour:
   zoomSpeed: 10
   PlayerCollider: {fileID: 390804439420031879}
   line: {fileID: 0}
+  bGameStart: 0
+  timer: {fileID: 0}
 --- !u!58 &390804439420031879
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -431,7 +438,6 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6107055090990253607}
-  serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
@@ -439,6 +445,7 @@ Transform:
   m_Children:
   - {fileID: 6107055090745115857}
   m_Father: {fileID: 6107055090878058626}
+  m_RootOrder: -2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!95 &3390897063704398165
 Animator:

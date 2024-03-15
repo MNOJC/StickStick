@@ -563,11 +563,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   timer: 0
-  firstMinute: {fileID: 1298907537904758677}
-  secondMinute: {fileID: 7696014752370722608}
+  firstMillisecond: {fileID: 7719317340964928958}
+  secondMillisecond: {fileID: 547938208181320536}
   separator: {fileID: 8400995217402327729}
-  firstSecond: {fileID: 7719317340964928958}
-  secondSecond: {fileID: 547938208181320536}
+  firstSecond: {fileID: 1298907537904758677}
+  secondSecond: {fileID: 7696014752370722608}
 --- !u!1 &5557256421277155162
 GameObject:
   m_ObjectHideFlags: 0
@@ -773,8 +773,8 @@ MonoBehaviour:
 
 '
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: f9642a8219b8a714c83ebb2df08cb037, type: 2}
+  m_sharedMaterial: {fileID: 6807769635093464807, guid: f9642a8219b8a714c83ebb2df08cb037, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []

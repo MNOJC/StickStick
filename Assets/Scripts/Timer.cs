@@ -9,10 +9,10 @@ public class Timer : MonoBehaviour
     private bool bPauseTimer = true;
 
     [SerializeField]
-    private TextMeshProUGUI firstMinute;
+    private TextMeshProUGUI firstMillisecond;
 
     [SerializeField]
-    private TextMeshProUGUI secondMinute;
+    private TextMeshProUGUI secondMillisecond;
 
     [SerializeField]
     private TextMeshProUGUI separator;
@@ -45,15 +45,15 @@ public class Timer : MonoBehaviour
 
     private void UpdateTimerDisplay(float time)
     {
-        float minutes = Mathf.FloorToInt(time / 60);
-        float seconds = Mathf.FloorToInt(time % 60);
+        float seconds = Mathf.FloorToInt(time);
+        float milliseconds = Mathf.FloorToInt((time - seconds) * 1000);
 
-        string currentTime = string.Format("{0:00}{1:00}", minutes, seconds);
+        string currentTime = string.Format("{0:00}{1:00}", seconds, milliseconds);
 
-        firstMinute.text = currentTime[0].ToString();
-        secondMinute.text = currentTime[1].ToString();
-        firstSecond.text = currentTime[2].ToString();
-        secondSecond.text = currentTime[3].ToString();
+        firstSecond.text = currentTime[0].ToString();
+        secondSecond.text = currentTime[1].ToString();
+        firstMillisecond.text = currentTime[2].ToString();
+        secondMillisecond.text = currentTime[3].ToString();
     }
     
     public void PauseTimer()

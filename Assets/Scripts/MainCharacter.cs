@@ -74,7 +74,7 @@ void OnCollisionEnter2D(Collision2D collision)
 
         ShakeCamera(0.7f, 0.1f);
     
-        Instantiate(CollisionParticles, collision.contacts[0].point, Quaternion.identity);
+        Instantiate(CollisionParticles, collision.contacts[0].point, targetRotation);
         _ShockWaveManager.CallShockWave();
         Debug.Log("Collision with wall");
         

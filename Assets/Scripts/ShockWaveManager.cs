@@ -9,6 +9,7 @@ public class ShockWaveManager : MonoBehaviour
     private Coroutine _shockWaveCoroutine;
     private Material material;
     private static int _waveDistanceFromCenter = Shader.PropertyToID("_WaveDistanceFromCenter");
+    private static float _ringSpawnPosition = Shader.PropertyToID("RingSpawnPosition");
 
     private void Start()
     {
@@ -45,5 +46,10 @@ public class ShockWaveManager : MonoBehaviour
             
             yield return null;
         }
+    }
+
+    public void UpdateRingSpawnPosition(float x, float y)
+    {
+        material.SetFloat(_ringSpawnPosition, )
     }
 }
