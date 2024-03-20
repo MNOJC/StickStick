@@ -50,6 +50,6 @@ public class ShockWaveManager : MonoBehaviour
 
     public void UpdateRingSpawnPosition(float x, float y)
     {
-        material.SetFloat(_ringSpawnPosition, )
+        //material.SetFloat(_ringSpawnPosition, )
     }
 }

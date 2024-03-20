@@ -18,6 +18,7 @@ public class MainCharacter : MonoBehaviour
     public float GravityForce = 2;
     public ParticleSystem JumpParticles;
     public ParticleSystem CollisionParticles;
+    public ParticleSystem DeathParticles;
     public Transform JumpParticlesTransform;
     public ShockWaveManager _ShockWaveManager;
     public CinemachineVirtualCamera virtualCamera;
@@ -63,7 +64,7 @@ void OnCollisionEnter2D(Collision2D collision)
 {
     if (collision.gameObject.CompareTag("Wall"))
     {
-        
+        animator.SetTrigger("CancelFlip");
         StopPlayer();
         LastNormalVectorCollision = collision.contacts[0].normal;
 
@@ -72,7 +73,7 @@ void OnCollisionEnter2D(Collision2D collision)
         Quaternion targetRotation = Quaternion.FromToRotation(Vector2.up, LastNormalVectorCollision);
         transform.rotation = targetRotation;
 
-        ShakeCamera(0.7f, 0.1f);
+        ShakeCamera(4f, 0.3f);
     
         Instantiate(CollisionParticles, collision.contacts[0].point, targetRotation);
         _ShockWaveManager.CallShockWave();
@@ -84,6 +85,7 @@ void OnCollisionEnter2D(Collision2D collision)
 
     if (collision.gameObject.CompareTag("KillZone"))
     {
+        Instantiate(DeathParticles, transform.position, Quaternion.identity);
         bCanStopLerp = true;
         PlayerCollider.enabled = false;
         animator.SetTrigger("Dead");
@@ -93,7 +95,7 @@ void OnCollisionEnter2D(Collision2D collision)
         StopPlayer();
 
         Time.timeScale = 1.0f;
-        ShakeCamera(4f, 1f);
+        ShakeCamera(50f, 1f);
         bCanDash = false;
 
         Invoke("RestartLevel", 1f);
@@ -128,8 +130,8 @@ void OnCollisionEnter2D(Collision2D collision)
     {
         if (other.CompareTag("DetectionZone"))
         {
-            Time.timeScale = 0.1f;
-            StartCoroutine(ZoomCamera(true, 40.0f, 8.0f));            
+            //Time.timeScale = 0.1f;
+            //StartCoroutine(ZoomCamera(true, 40.0f, 8.0f));            
         }
     }
 
@@ -137,8 +139,8 @@ void OnCollisionEnter2D(Collision2D collision)
     {
         if (other.CompareTag("DetectionZone") && !bPlayerDead)
         {
-            Time.timeScale = 1f;
-            StartCoroutine(ZoomCamera(false, 20f, 9.0f));
+            //Time.timeScale = 1f;
+            //StartCoroutine(ZoomCamera(false, 20f, 9.0f));
         }
     }
 
@@ -232,6 +234,7 @@ void OnSpaceKeyPressed()
 void OnSpaceKeyHeld()
 {
     timer.StartTimer();
+    animator.SetTrigger("Flip");
     Quaternion targetRotation = Quaternion.FromToRotation(Vector2.up, LastNormalVectorCollision);
     Instantiate(JumpParticles, JumpParticlesTransform.position, targetRotation);
     
