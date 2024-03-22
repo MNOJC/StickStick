@@ -4889,8 +4889,8 @@ ParticleSystemRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
   - {fileID: 2100000, guid: 40947d79f41732a45a9a33a093165b5a, type: 2}
+  - {fileID: 2100000, guid: f82f4afbda48bca4f9c78cec78f837bb, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -8874,7 +8874,7 @@ ParticleSystem:
       emitProbability: 1
   LightsModule:
     enabled: 0
-    ratio: 0
+    ratio: 1
     light: {fileID: 0}
     randomDistribution: 1
     color: 1
@@ -8883,7 +8883,7 @@ ParticleSystem:
     rangeCurve:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 1
+      scalar: 16.06
       minScalar: 1
       maxCurve:
         serializedVersion: 2
@@ -8936,7 +8936,7 @@ ParticleSystem:
     intensityCurve:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 1
+      scalar: 8.54
       minScalar: 1
       maxCurve:
         serializedVersion: 2
@@ -8986,7 +8986,7 @@ ParticleSystem:
         m_PreInfinity: 2
         m_PostInfinity: 2
         m_RotationOrder: 4
-    maxLights: 20
+    maxLights: 150
   TrailModule:
     enabled: 1
     mode: 0
@@ -9831,8 +9831,8 @@ ParticleSystemRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
   - {fileID: 2100000, guid: 40947d79f41732a45a9a33a093165b5a, type: 2}
+  - {fileID: 2100000, guid: f82f4afbda48bca4f9c78cec78f837bb, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
