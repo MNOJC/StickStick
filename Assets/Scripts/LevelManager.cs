@@ -6,10 +6,14 @@ using UnityEngine.SceneManagement;
 public class LevelManager : MonoBehaviour
 {
     public string[] levelNames;
-    public MainCharacter mainCharacter;
+    private MainCharacter mainCharacter;
     private static LevelManager instance;
     private int currentLevelIndex = 0;
 
+    void Awake()
+    {
+        mainCharacter = GameObject.Find("Player").GetComponent<MainCharacter>();
+    }
     void Start()
     {
         DontDestroyOnLoad(gameObject);

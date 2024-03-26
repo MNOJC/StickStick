@@ -47,3 +47,5 @@ MonoBehaviour:
   levelNames:
   - Scene_01
   - Scene_02
+  - Scene_03
+  mainCharacter: {fileID: 0}

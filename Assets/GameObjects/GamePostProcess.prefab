@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &2143397382924645116
+--- !u!1 &3756783457795679768
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,43 +8,44 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 749183932216295759}
-  - component: {fileID: 5619963859723381323}
+  - component: {fileID: 4091059171888961006}
+  - component: {fileID: 1167005003523182862}
   m_Layer: 0
-  m_Name: LevelScoreManager
+  m_Name: GamePostProcess
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &749183932216295759
+--- !u!4 &4091059171888961006
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2143397382924645116}
+  m_GameObject: {fileID: 3756783457795679768}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1.1331874, y: -1.3413069, z: -0.0040764487}
+  m_LocalPosition: {x: -1.3483098, y: 0.06552169, z: -0.59132993}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: -2
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &5619963859723381323
+--- !u!114 &1167005003523182862
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2143397382924645116}
+  m_GameObject: {fileID: 3756783457795679768}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 589116a5dd3a4c7419ccf1dfc0df51b6, type: 3}
+  m_Script: {fileID: 11500000, guid: 172515602e62fb746b5d573b38a5fe58, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  timeFirstStar: 30
-  timeSecondStar: 15
-  timeThirdStar: 5
-  levelName: Level - 1
+  m_IsGlobal: 1
+  priority: 0
+  blendDistance: 0
+  weight: 1
+  sharedProfile: {fileID: 11400000, guid: 23e98c7bbf2c7fc43b1f5edb27074c6e, type: 2}

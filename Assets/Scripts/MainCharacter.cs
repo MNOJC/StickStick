@@ -20,14 +20,14 @@ public class MainCharacter : MonoBehaviour
     public ParticleSystem CollisionParticles;
     public ParticleSystem DeathParticles;
     public Transform JumpParticlesTransform;
-    public ShockWaveManager _ShockWaveManager;
-    public CinemachineVirtualCamera virtualCamera;
+    private ShockWaveManager _ShockWaveManager;
+    private CinemachineVirtualCamera virtualCamera;
     public float zoomFov = 8f;
     public float defaultOrthoSize = 9f;
     public float zoomSpeed = 2f;
     public Collider2D PlayerCollider;
         
-[SerializeField] private LineRendererController line;
+private LineRendererController line;
 private float pressThreshold = 0.2f;
 private float holdThreshold = 0.2f;
 private float spaceKeyHeldStartTime = 0f;
@@ -42,16 +42,18 @@ private bool bKeyHeld = false;
 private bool bPlayerDead = false;
 private bool bCanDash = false;
 private bool bCanJump = false;
-
 public bool bGameStart = false;
-
 private bool bCanStopLerp;
+private Timer timer;
 
-    [SerializeField]
-    private Timer timer;
-
-
-    void Start()
+void Awake() 
+{
+    _ShockWaveManager = GameObject.Find("ShockWaveManager").GetComponent<ShockWaveManager>();
+    virtualCamera = GameObject.Find("CM vcam1").GetComponent<CinemachineVirtualCamera>();
+    line = GameObject.Find("LineRenderer").GetComponent<LineRendererController>();
+    timer = GameObject.Find("CanvaTimer").GetComponent<Timer>();
+}
+void Start()
 {
     
     DisableInput(true);
