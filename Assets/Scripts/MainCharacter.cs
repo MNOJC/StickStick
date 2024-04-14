@@ -148,13 +148,13 @@ void OnCollisionEnter2D(Collision2D collision)
 
 void Update()
 {
-    if (Input.GetKeyDown(KeyCode.Space))
+    if (Input.GetKeyDown(KeyCode.Space) && bCanJump && bCanDash)
     {
         
         spaceKeyHeldStartTime = Time.time;
         
     }
-    if (Input.GetKey(KeyCode.Space)) 
+    if (Input.GetKey(KeyCode.Space) && bCanJump && bCanDash) 
     {
         if (Time.time - spaceKeyHeldStartTime > holdThreshold && bCanPlayHoldJumpAnim && CheckIfPlayerIsGrounded()) 
         {

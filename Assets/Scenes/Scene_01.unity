@@ -2425,7 +2425,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 116138224631672949, guid: ca45ade7ceec8c64498e90007ec3a08e, type: 3}
       propertyPath: m_TargetCameraAlpha
-      value: 1.7196183
+      value: 1.9913832
       objectReference: {fileID: 0}
     - target: {fileID: 2878087809772997369, guid: ca45ade7ceec8c64498e90007ec3a08e, type: 3}
       propertyPath: m_RootOrder
@@ -2470,6 +2470,14 @@ PrefabInstance:
     - target: {fileID: 2878087809772997369, guid: ca45ade7ceec8c64498e90007ec3a08e, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3116557979675021918, guid: ca45ade7ceec8c64498e90007ec3a08e, type: 3}
+      propertyPath: orthographic size
+      value: 8.8
+      objectReference: {fileID: 0}
+    - target: {fileID: 3276746279121364212, guid: ca45ade7ceec8c64498e90007ec3a08e, type: 3}
+      propertyPath: m_Lens.OrthographicSize
+      value: 8.8
       objectReference: {fileID: 0}
     - target: {fileID: 8064846480713160384, guid: ca45ade7ceec8c64498e90007ec3a08e, type: 3}
       propertyPath: m_Name
