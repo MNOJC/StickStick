@@ -40,8 +40,8 @@ private CameraShake CameraShake;
 private Vector2 LastNormalVectorCollision = new Vector2(0, 0);
 private bool bKeyHeld = false;
 private bool bPlayerDead = false;
-private bool bCanDash = false;
-private bool bCanJump = false;
+public bool bCanDash = false;
+public bool bCanJump = false;
 public bool bGameStart = false;
 private bool bCanStopLerp;
 private Timer timer;
@@ -58,6 +58,7 @@ void Start()
     
     DisableInput(true);
     SetPlayerOnStartPoint();
+    if (GetClosestSlimePiece() != null)
     SetUpLine(this.transform, GetClosestSlimePiece().transform);
     
 }
@@ -211,7 +212,7 @@ void OnSpaceKeyPressed()
         if (Hit = Physics2D.Linecast(transform.position, closestSlimePiece.transform.position))
         {
             
-            if (Hit.collider.CompareTag("Wall"))
+            if (Hit.collider.CompareTag("Wall") || Hit.collider.CompareTag("GoldenFork"))
             {
                 lerpCoroutine = StartCoroutine(LerpToPosition(Hit.point));
                 bCanStopLerp = true;
@@ -345,7 +346,7 @@ IEnumerator LerpToPosition(Vector3 targetPosition)
 
         Vector2 direction = -LastNormalVectorCollision;
 
-        RaycastHit2D hit = Physics2D.Raycast(transform.position, direction, 1.0f, groundLayerMask);
+        RaycastHit2D hit = Physics2D.Raycast(transform.position, direction, 3.0f, groundLayerMask);
         
         return hit.collider != null;
     }

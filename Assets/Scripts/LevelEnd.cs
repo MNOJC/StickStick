@@ -9,6 +9,8 @@ public class LevelEnd : MonoBehaviour
     private Timer timer;
     private float levelFinishedTime;
 
+    [SerializeField] private ParticleSystem levelEndParticles;
+
 
 
 void Start() {
@@ -20,6 +22,7 @@ void Start() {
     {
         if (collision.gameObject.CompareTag("Player"))
         {
+            Instantiate(levelEndParticles, transform.position, Quaternion.identity);
             levelFinishedTime = timer.timer;
             SetupLevelScore();
             timer.PauseTimer();

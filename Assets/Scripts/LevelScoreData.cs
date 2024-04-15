@@ -4,15 +4,11 @@ using UnityEngine;
 
 public class LevelScoreData : MonoBehaviour
 {
-    [SerializeField]
-    public float timeFirstStar;
+    [SerializeField] public float timeFirstStar;
 
-    [SerializeField]
-    public float timeSecondStar;
+    [SerializeField] public float timeSecondStar;
 
-    [SerializeField]
-    public float timeThirdStar;
+    [SerializeField] public float timeThirdStar;
 
-    [SerializeField]
-    public string levelName;
+    [SerializeField] public string levelName;
 }

@@ -14,26 +14,24 @@ public class LevelManager : MonoBehaviour
     {
         mainCharacter = GameObject.Find("Player").GetComponent<MainCharacter>();
     }
-    void Start()
+void Start()
+{
+    if (instance == null)
     {
-        DontDestroyOnLoad(gameObject);
-
-        if (instance != null)
-        {
-            Destroy(gameObject);
-        }
-        else
-        {
-            // Sinon, fait de cette instance l'instance unique
-            instance = this;
-            DontDestroyOnLoad(gameObject);
-        }
+        instance = this;
+        DontDestroyOnLoad(this.gameObject);
     }
+    else
+    {
+       DestroyImmediate(this.gameObject);
+    }
+}
 
     public void LoadCurrentLevel()
     {
         if (currentLevelIndex < levelNames.Length)
         {
+            Debug.Log("LINDEX CCC :" + currentLevelIndex);
             SceneManager.LoadScene(levelNames[currentLevelIndex]);
             
         

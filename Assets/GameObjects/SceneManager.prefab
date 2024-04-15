@@ -45,7 +45,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   levelNames:
-  - Scene_01
-  - Scene_02
-  - Scene_03
-  mainCharacter: {fileID: 0}
+  - Scene_tuto_01
+  - Scene_tuto_02
+  - Scene_tuto_03
+  - Scene_tuto_04
+  - Scene_05
+  - Scene_06
+  - Scene_07
+  - Scene_08

@@ -57,7 +57,6 @@ public class Score : MonoBehaviour
             yield return new WaitForSeconds(time);
             starImage.SetActive(true);
             animator.SetTrigger(star);
-            Debug.Log("Star");
 
             
             yield return new WaitForSeconds(0.7f);

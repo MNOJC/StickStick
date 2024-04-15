@@ -99,7 +99,7 @@ public class MenuManager : MonoBehaviour
             switch (index)
             {
                 case 0:
-                    SceneManager.LoadScene("Scene_01");
+                    SceneManager.LoadScene("Scene_tuto_01");
                     break;
                 case 1:
                     Debug.Log("Settings Button Pressed");
