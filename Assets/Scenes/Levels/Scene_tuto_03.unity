@@ -2301,7 +2301,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 116138224631672949, guid: ca45ade7ceec8c64498e90007ec3a08e, type: 3}
       propertyPath: m_TargetCameraAlpha
-      value: 0.49178132
+      value: 0.4
       objectReference: {fileID: 0}
     - target: {fileID: 690698374879288679, guid: ca45ade7ceec8c64498e90007ec3a08e, type: 3}
       propertyPath: m_LocalPosition.x
@@ -2442,7 +2442,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 367661382733142092, guid: 9ddee925cd78bee4cae46fbc9b9426ad, type: 3}
       propertyPath: m_text
-      value: Is angy
+      value: Vans is angy
       objectReference: {fileID: 0}
     - target: {fileID: 367661382733142092, guid: 9ddee925cd78bee4cae46fbc9b9426ad, type: 3}
       propertyPath: m_fontSize

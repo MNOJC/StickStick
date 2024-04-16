@@ -54,6 +54,11 @@ public class AudioManager : MonoBehaviour
 
     public void ToggleMusic()
     {
+        musicSource.mute = !musicSource.mute;
+    }
+
+    public void ToggleSFX()
+    {
         sfxSource.mute = !sfxSource.mute;
     }
 

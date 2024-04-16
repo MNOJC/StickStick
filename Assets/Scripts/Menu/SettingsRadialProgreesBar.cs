@@ -26,7 +26,7 @@ public class SettingsRadialProgressBar : MonoBehaviour
     void Update()
     {
     
-        if(bActive)
+        if(bActive && menuManager.canInteract)
         {
             if (currentValue < 100)
             {
@@ -44,21 +44,24 @@ public class SettingsRadialProgressBar : MonoBehaviour
                         break;
                 }
             } 
-            else if (currentValue >= 100)
+            else if (currentValue == 100)
             {
                 switch (index)
                 {
                     case 0:
                         menuManager.ToggleMusic();
                         currentValue = 0;
+                        menuManager.ResetImageProgress();
                         break;
                     case 1:
-                         menuManager.ToggleSFX();
-                         currentValue = 0;
+                        menuManager.ToggleSFX();
+                        currentValue = 0;
+                        menuManager.ResetImageProgress();
                         break;
                     case 2:
                         menuManager.Back();
                         currentValue = 0;
+                        menuManager.ResetImageProgress();
                         break;
                 }
                 
