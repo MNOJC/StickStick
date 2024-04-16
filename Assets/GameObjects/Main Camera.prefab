@@ -136,6 +136,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   shader: {fileID: 4800000, guid: 0a3c04d411f83614ab285ced492c8fcb, type: 3}
   VHSClip: {fileID: 32900000, guid: 52d63a2eb55128c498456280a99c2990, type: 3}
+  duration: 3
 --- !u!114 &6798136646982579485
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -384,7 +385,7 @@ Camera:
     serializedVersion: 2
     m_Bits: 31
   m_RenderingPath: -1
-  m_TargetTexture: {fileID: 8400000, guid: a248647ba78656e4aa7da62e8ca54103, type: 2}
+  m_TargetTexture: {fileID: 8400000, guid: 60245b410d6771b4ba7ad1d2a816cc3f, type: 2}
   m_TargetDisplay: 0
   m_TargetEye: 0
   m_HDR: 1

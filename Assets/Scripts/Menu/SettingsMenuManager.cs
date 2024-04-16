@@ -6,7 +6,7 @@ using UnityEngine;
 
 
 
-public class MenuManager : MonoBehaviour
+public class SettingsMenuManager : MonoBehaviour
 {
     private int index = 0;
     private float pressThreshold = 0.2f;
@@ -17,7 +17,7 @@ public class MenuManager : MonoBehaviour
     [SerializeField] private Button playButton;
     [SerializeField] private Button settingsButton;
     [SerializeField] private Button quitButton;
-    [SerializeField] private RadialProgreesBar radialProgreesBar;
+    [SerializeField] private SettingsRadialProgressBar radialProgreesBar;
     [SerializeField] private Animator MenuAnimator;
     private Animator PlayButtonAnimator;
     private Animator SettingsButtonAnimator;
@@ -31,7 +31,7 @@ public class MenuManager : MonoBehaviour
         PlayButtonAnimator = playButton.GetComponent<Animator>();
         if (PlayButtonAnimator != null)
         {
-            PlayButtonAnimator.SetBool("Selected", true);
+            PlayButtonAnimator.SetBool("SelectedSettings", true);
         }
     
        
@@ -76,7 +76,7 @@ public class MenuManager : MonoBehaviour
             {
                 case 0:
 
-                        PlayButtonAnimator.SetBool("Selected", true);
+                        PlayButtonAnimator.SetBool("SelectedSettings", true);
                         SettingsButtonAnimator.SetBool("Selected", false);
                         QuitButtonAnimator.SetBool("Selected", false);
                     
@@ -84,14 +84,14 @@ public class MenuManager : MonoBehaviour
                 case 1:
 
                         SettingsButtonAnimator.SetBool("Selected", true);
-                        PlayButtonAnimator.SetBool("Selected", false);
+                        PlayButtonAnimator.SetBool("SelectedSettings", false);
                         QuitButtonAnimator.SetBool("Selected", false);
 
                         break;
                 case 2:
 
                         QuitButtonAnimator.SetBool("Selected", true);
-                        PlayButtonAnimator.SetBool("Selected", false);
+                        PlayButtonAnimator.SetBool("SelectedSettings", false);
                         SettingsButtonAnimator.SetBool("Selected", false);
                     break;
             }
@@ -101,13 +101,13 @@ public class MenuManager : MonoBehaviour
             switch (index)
             {
                 case 0:
-                    PlayButton();
+                    ToggleMusic();
                     break;
                 case 1:
-                    SettingsButton();
+                    ToggleSFX();
                     break;
                 case 2:
-                    QuitButton();   
+                    Back();
                     break;
             }
         }   
@@ -124,27 +124,29 @@ void ResetImageProgress()
     radialProgreesBar.settingsImage.fillAmount = 0;
     radialProgreesBar.quitImage.fillAmount = 0;
 }
-public void PlayButton()
+
+public void ToggleMusic()
 {
-    SceneManager.LoadScene("Scene_tuto_01");
+    Debug.Log("Toggle Music");
 }
 
-public void SettingsButton()
+public void ToggleSFX()
+{
+    Debug.Log("Toggle SFX");
+}
+
+public void Back()
 {
     MenuAnimator.SetTrigger("FadeOut");
-    StartCoroutine(LoadSettingsScene());
-
+    StartCoroutine(LoadMenu());
 }
 
-public void QuitButton()
-{
-    Application.Quit();
-}
-
-IEnumerator LoadSettingsScene()
+IEnumerator LoadMenu()
 {
     yield return new WaitForSeconds(0f);
-    SceneManager.LoadScene("SettingsScene");
+    SceneManager.LoadScene("MenuScene");
 
 }
 }
+
+

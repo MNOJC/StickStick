@@ -12,6 +12,7 @@ public class VHSPostProcessEffect : MonoBehaviour
 {
 	public Shader shader;
 	public VideoClip VHSClip;
+	public float duration = 3.0f;
 
 	private float _yScanline;
 	private float _xScanline;
@@ -26,7 +27,7 @@ public class VHSPostProcessEffect : MonoBehaviour
 		_player.audioOutputMode = VideoAudioOutputMode.None;
 		_player.clip = VHSClip;
 		_player.Play();
-		StartCoroutine(LerpAlpha(2.0f, 0.4f, 3.0f));
+		StartCoroutine(LerpAlpha(2.0f, 0.4f, duration));
     }
 
 	

@@ -1423,7 +1423,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 116138224631672949, guid: ca45ade7ceec8c64498e90007ec3a08e, type: 3}
       propertyPath: m_TargetCameraAlpha
-      value: 1.9948316
+      value: 0.4
       objectReference: {fileID: 0}
     - target: {fileID: 690698374879288679, guid: ca45ade7ceec8c64498e90007ec3a08e, type: 3}
       propertyPath: m_LocalPosition.x

@@ -3,13 +3,13 @@ using System.Collections.Generic;
 using UnityEngine.UI;
 using UnityEngine;
 
-public class RadialProgreesBar : MonoBehaviour
+public class SettingsRadialProgressBar : MonoBehaviour
 {
     [SerializeField] public Image playImage;
     [SerializeField] public Image settingsImage;
     [SerializeField] public Image quitImage;
     [SerializeField] private float fillSpeed = 0.5f;
-    [SerializeField] private MenuManager menuManager;
+    [SerializeField] private SettingsMenuManager menuManager;
 
     public float currentValue = 0f;
     public bool bActive = false;
@@ -43,20 +43,21 @@ public class RadialProgreesBar : MonoBehaviour
                         quitImage.fillAmount = currentValue / 100;
                         break;
                 }
-            } else if (currentValue >= 100)
+            } 
+            else if (currentValue >= 100)
             {
                 switch (index)
                 {
                     case 0:
-                        menuManager.PlayButton();
+                        menuManager.ToggleMusic();
                         currentValue = 0;
                         break;
                     case 1:
-                         menuManager.SettingsButton();
+                         menuManager.ToggleSFX();
                          currentValue = 0;
                         break;
                     case 2:
-                        menuManager.QuitButton();
+                        menuManager.Back();
                         currentValue = 0;
                         break;
                 }

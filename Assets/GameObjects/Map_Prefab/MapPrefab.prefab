@@ -1124,7 +1124,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7068093112861670973, guid: 06befaed372b2c34d9885fef6a10c413, type: 3}
       propertyPath: m_TargetCameraAlpha
-      value: 1.2321554
+      value: 1.1605824
       objectReference: {fileID: 0}
     - target: {fileID: 9078269656881193707, guid: 06befaed372b2c34d9885fef6a10c413, type: 3}
       propertyPath: m_Name
