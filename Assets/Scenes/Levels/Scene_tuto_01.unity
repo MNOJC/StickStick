@@ -1499,7 +1499,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4702292700515521889, guid: ca45ade7ceec8c64498e90007ec3a08e, type: 3}
       propertyPath: m_Color.a
-      value: 0.7882353
+      value: 0.5254902
       objectReference: {fileID: 0}
     - target: {fileID: 5114502872371195945, guid: ca45ade7ceec8c64498e90007ec3a08e, type: 3}
       propertyPath: timeFirstStar
@@ -1550,7 +1550,8 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
-    m_RemovedGameObjects: []
+    m_RemovedGameObjects:
+    - {fileID: 8807793291606382837, guid: ca45ade7ceec8c64498e90007ec3a08e, type: 3}
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ca45ade7ceec8c64498e90007ec3a08e, type: 3}

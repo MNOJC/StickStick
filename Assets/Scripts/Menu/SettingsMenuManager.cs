@@ -22,6 +22,7 @@ public class SettingsMenuManager : MonoBehaviour
     private Animator PlayButtonAnimator;
     private Animator SettingsButtonAnimator;
     private Animator QuitButtonAnimator;
+    
 
     private void Start()
     {  
