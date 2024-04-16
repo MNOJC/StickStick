@@ -2530,7 +2530,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 116138224631672949, guid: ca45ade7ceec8c64498e90007ec3a08e, type: 3}
       propertyPath: m_TargetCameraAlpha
-      value: 1.5810102
+      value: 1.8927974
+      objectReference: {fileID: 0}
+    - target: {fileID: 687994020183330021, guid: ca45ade7ceec8c64498e90007ec3a08e, type: 3}
+      propertyPath: m_hasFontAssetChanged
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 690698374879288679, guid: ca45ade7ceec8c64498e90007ec3a08e, type: 3}
       propertyPath: m_LocalPosition.x
@@ -2539,6 +2543,14 @@ PrefabInstance:
     - target: {fileID: 690698374879288679, guid: ca45ade7ceec8c64498e90007ec3a08e, type: 3}
       propertyPath: m_LocalPosition.y
       value: -286.771
+      objectReference: {fileID: 0}
+    - target: {fileID: 753933459434360504, guid: ca45ade7ceec8c64498e90007ec3a08e, type: 3}
+      propertyPath: m_hasFontAssetChanged
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2022170697807157288, guid: ca45ade7ceec8c64498e90007ec3a08e, type: 3}
+      propertyPath: m_hasFontAssetChanged
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2055742722134445937, guid: ca45ade7ceec8c64498e90007ec3a08e, type: 3}
       propertyPath: m_AnchoredPosition.y
@@ -2590,11 +2602,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3116557979675021918, guid: ca45ade7ceec8c64498e90007ec3a08e, type: 3}
       propertyPath: orthographic size
-      value: 9
+      value: 8.807524
       objectReference: {fileID: 0}
     - target: {fileID: 3276746279121364212, guid: ca45ade7ceec8c64498e90007ec3a08e, type: 3}
       propertyPath: m_Lens.OrthographicSize
-      value: 9
+      value: 8.807524
       objectReference: {fileID: 0}
     - target: {fileID: 3284211327099804376, guid: ca45ade7ceec8c64498e90007ec3a08e, type: 3}
       propertyPath: m_LocalPosition.x
@@ -2624,13 +2636,25 @@ PrefabInstance:
       propertyPath: timeSecondStar
       value: 15
       objectReference: {fileID: 0}
+    - target: {fileID: 7267447140209995917, guid: ca45ade7ceec8c64498e90007ec3a08e, type: 3}
+      propertyPath: m_hasFontAssetChanged
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7293036670476487171, guid: ca45ade7ceec8c64498e90007ec3a08e, type: 3}
+      propertyPath: m_hasFontAssetChanged
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7766485255399161956, guid: ca45ade7ceec8c64498e90007ec3a08e, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8064846480713160384, guid: ca45ade7ceec8c64498e90007ec3a08e, type: 3}
       propertyPath: m_Name
       value: MapPrefab
+      objectReference: {fileID: 0}
+    - target: {fileID: 8827267118641267980, guid: ca45ade7ceec8c64498e90007ec3a08e, type: 3}
+      propertyPath: m_hasFontAssetChanged
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 9048664670425585925, guid: ca45ade7ceec8c64498e90007ec3a08e, type: 3}
       propertyPath: m_SortingOrder
@@ -2677,6 +2701,26 @@ PrefabInstance:
       propertyPath: m_text
       value: Touch the Golden Fork
       objectReference: {fileID: 0}
+    - target: {fileID: 367661382733142092, guid: 9ddee925cd78bee4cae46fbc9b9426ad, type: 3}
+      propertyPath: m_fontSize
+      value: 16
+      objectReference: {fileID: 0}
+    - target: {fileID: 367661382733142092, guid: 9ddee925cd78bee4cae46fbc9b9426ad, type: 3}
+      propertyPath: m_fontAsset
+      value: 
+      objectReference: {fileID: 11400000, guid: f2205e21ccae6694dacf0d7748de4483, type: 2}
+    - target: {fileID: 367661382733142092, guid: 9ddee925cd78bee4cae46fbc9b9426ad, type: 3}
+      propertyPath: m_fontSizeBase
+      value: 16
+      objectReference: {fileID: 0}
+    - target: {fileID: 367661382733142092, guid: 9ddee925cd78bee4cae46fbc9b9426ad, type: 3}
+      propertyPath: m_sharedMaterial
+      value: 
+      objectReference: {fileID: 8902232659608433523, guid: f2205e21ccae6694dacf0d7748de4483, type: 2}
+    - target: {fileID: 367661382733142092, guid: 9ddee925cd78bee4cae46fbc9b9426ad, type: 3}
+      propertyPath: m_hasFontAssetChanged
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 564575261129583240, guid: 9ddee925cd78bee4cae46fbc9b9426ad, type: 3}
       propertyPath: m_Name
       value: TutoCanva
@@ -2693,7 +2737,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3733185530710244770, guid: 9ddee925cd78bee4cae46fbc9b9426ad, type: 3}
       propertyPath: m_SizeDelta.x
-      value: 150
+      value: 169.21
       objectReference: {fileID: 0}
     - target: {fileID: 3733185530710244770, guid: 9ddee925cd78bee4cae46fbc9b9426ad, type: 3}
       propertyPath: m_AnchoredPosition.x

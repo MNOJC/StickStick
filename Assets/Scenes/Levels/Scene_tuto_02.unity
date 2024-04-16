@@ -1758,7 +1758,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 116138224631672949, guid: ca45ade7ceec8c64498e90007ec3a08e, type: 3}
       propertyPath: m_TargetCameraAlpha
-      value: 0.63567275
+      value: 0.4
       objectReference: {fileID: 0}
     - target: {fileID: 690698374879288679, guid: ca45ade7ceec8c64498e90007ec3a08e, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1905,6 +1905,26 @@ PrefabInstance:
       propertyPath: m_text
       value: Tap
       objectReference: {fileID: 0}
+    - target: {fileID: 367661382733142092, guid: 9ddee925cd78bee4cae46fbc9b9426ad, type: 3}
+      propertyPath: m_fontSize
+      value: 16
+      objectReference: {fileID: 0}
+    - target: {fileID: 367661382733142092, guid: 9ddee925cd78bee4cae46fbc9b9426ad, type: 3}
+      propertyPath: m_fontAsset
+      value: 
+      objectReference: {fileID: 11400000, guid: f2205e21ccae6694dacf0d7748de4483, type: 2}
+    - target: {fileID: 367661382733142092, guid: 9ddee925cd78bee4cae46fbc9b9426ad, type: 3}
+      propertyPath: m_fontSizeBase
+      value: 16
+      objectReference: {fileID: 0}
+    - target: {fileID: 367661382733142092, guid: 9ddee925cd78bee4cae46fbc9b9426ad, type: 3}
+      propertyPath: m_sharedMaterial
+      value: 
+      objectReference: {fileID: 8902232659608433523, guid: f2205e21ccae6694dacf0d7748de4483, type: 2}
+    - target: {fileID: 367661382733142092, guid: 9ddee925cd78bee4cae46fbc9b9426ad, type: 3}
+      propertyPath: m_hasFontAssetChanged
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 564575261129583240, guid: 9ddee925cd78bee4cae46fbc9b9426ad, type: 3}
       propertyPath: m_Name
       value: TutoCanva
@@ -1918,6 +1938,26 @@ PrefabInstance:
       value: 'to dash
 
 '
+      objectReference: {fileID: 0}
+    - target: {fileID: 2926466784186356327, guid: 9ddee925cd78bee4cae46fbc9b9426ad, type: 3}
+      propertyPath: m_fontSize
+      value: 16
+      objectReference: {fileID: 0}
+    - target: {fileID: 2926466784186356327, guid: 9ddee925cd78bee4cae46fbc9b9426ad, type: 3}
+      propertyPath: m_fontAsset
+      value: 
+      objectReference: {fileID: 11400000, guid: f2205e21ccae6694dacf0d7748de4483, type: 2}
+    - target: {fileID: 2926466784186356327, guid: 9ddee925cd78bee4cae46fbc9b9426ad, type: 3}
+      propertyPath: m_fontSizeBase
+      value: 16
+      objectReference: {fileID: 0}
+    - target: {fileID: 2926466784186356327, guid: 9ddee925cd78bee4cae46fbc9b9426ad, type: 3}
+      propertyPath: m_sharedMaterial
+      value: 
+      objectReference: {fileID: 8902232659608433523, guid: f2205e21ccae6694dacf0d7748de4483, type: 2}
+    - target: {fileID: 2926466784186356327, guid: 9ddee925cd78bee4cae46fbc9b9426ad, type: 3}
+      propertyPath: m_hasFontAssetChanged
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5085194027391558913, guid: 9ddee925cd78bee4cae46fbc9b9426ad, type: 3}
       propertyPath: m_Pivot.x

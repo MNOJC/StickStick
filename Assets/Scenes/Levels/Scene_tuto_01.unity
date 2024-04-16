@@ -1563,6 +1563,26 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 367661382733142092, guid: 9ddee925cd78bee4cae46fbc9b9426ad, type: 3}
+      propertyPath: m_fontSize
+      value: 16
+      objectReference: {fileID: 0}
+    - target: {fileID: 367661382733142092, guid: 9ddee925cd78bee4cae46fbc9b9426ad, type: 3}
+      propertyPath: m_fontAsset
+      value: 
+      objectReference: {fileID: 11400000, guid: f2205e21ccae6694dacf0d7748de4483, type: 2}
+    - target: {fileID: 367661382733142092, guid: 9ddee925cd78bee4cae46fbc9b9426ad, type: 3}
+      propertyPath: m_fontSizeBase
+      value: 16
+      objectReference: {fileID: 0}
+    - target: {fileID: 367661382733142092, guid: 9ddee925cd78bee4cae46fbc9b9426ad, type: 3}
+      propertyPath: m_sharedMaterial
+      value: 
+      objectReference: {fileID: 8902232659608433523, guid: f2205e21ccae6694dacf0d7748de4483, type: 2}
+    - target: {fileID: 367661382733142092, guid: 9ddee925cd78bee4cae46fbc9b9426ad, type: 3}
+      propertyPath: m_hasFontAssetChanged
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 564575261129583240, guid: 9ddee925cd78bee4cae46fbc9b9426ad, type: 3}
       propertyPath: m_Name
       value: TutoCanva
@@ -1571,6 +1591,26 @@ PrefabInstance:
       propertyPath: m_Camera
       value: 
       objectReference: {fileID: 1218635232}
+    - target: {fileID: 2926466784186356327, guid: 9ddee925cd78bee4cae46fbc9b9426ad, type: 3}
+      propertyPath: m_fontSize
+      value: 16
+      objectReference: {fileID: 0}
+    - target: {fileID: 2926466784186356327, guid: 9ddee925cd78bee4cae46fbc9b9426ad, type: 3}
+      propertyPath: m_fontAsset
+      value: 
+      objectReference: {fileID: 11400000, guid: f2205e21ccae6694dacf0d7748de4483, type: 2}
+    - target: {fileID: 2926466784186356327, guid: 9ddee925cd78bee4cae46fbc9b9426ad, type: 3}
+      propertyPath: m_fontSizeBase
+      value: 16
+      objectReference: {fileID: 0}
+    - target: {fileID: 2926466784186356327, guid: 9ddee925cd78bee4cae46fbc9b9426ad, type: 3}
+      propertyPath: m_sharedMaterial
+      value: 
+      objectReference: {fileID: 8902232659608433523, guid: f2205e21ccae6694dacf0d7748de4483, type: 2}
+    - target: {fileID: 2926466784186356327, guid: 9ddee925cd78bee4cae46fbc9b9426ad, type: 3}
+      propertyPath: m_hasFontAssetChanged
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5085194027391558913, guid: 9ddee925cd78bee4cae46fbc9b9426ad, type: 3}
       propertyPath: m_Pivot.x
       value: 0
