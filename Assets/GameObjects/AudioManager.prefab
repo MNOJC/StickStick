@@ -304,10 +304,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   musicSounds:
   - name: Theme
-    clip: {fileID: 0}
+    clip: {fileID: 8300000, guid: 9ea172ff4aeae254682954a28ddb1233, type: 3}
+  - name: VHS
+    clip: {fileID: 8300000, guid: 2e5654f50f5a8454cad3cb8ede447c4b, type: 3}
   sfxSounds:
-  - name: Jump
-    clip: {fileID: 0}
+  - name: Title
+    clip: {fileID: 8300000, guid: de907ba5d90bacd46ab989f28ec78075, type: 3}
   - name: Collision
     clip: {fileID: 0}
   musicSource: {fileID: 227129968949986958}
