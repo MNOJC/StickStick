@@ -44,7 +44,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 1
-  m_Volume: 1
+  m_Volume: 0.6
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -256,6 +256,134 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!1 &3024163820916946523
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4157923915207443617}
+  - component: {fileID: 9009333092814292767}
+  m_Layer: 0
+  m_Name: VHS_Background
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4157923915207443617
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3024163820916946523}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 4928956428192072874}
+  m_RootOrder: -1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!82 &9009333092814292767
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3024163820916946523}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 8300000, guid: 8b033168ea1a3404297f0110e76f0387, type: 3}
+  m_PlayOnAwake: 1
+  m_Volume: 0.1
+  m_Pitch: 1
+  Loop: 1
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!1 &3839375428645381674
 GameObject:
   m_ObjectHideFlags: 0
@@ -287,8 +415,9 @@ Transform:
   m_Children:
   - {fileID: 2567415812380655529}
   - {fileID: 2931411871458175655}
+  - {fileID: 4157923915207443617}
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &4489238042657277309
 MonoBehaviour:
@@ -305,12 +434,32 @@ MonoBehaviour:
   musicSounds:
   - name: Theme
     clip: {fileID: 8300000, guid: 9ea172ff4aeae254682954a28ddb1233, type: 3}
-  - name: VHS
-    clip: {fileID: 8300000, guid: 2e5654f50f5a8454cad3cb8ede447c4b, type: 3}
   sfxSounds:
   - name: Title
     clip: {fileID: 8300000, guid: de907ba5d90bacd46ab989f28ec78075, type: 3}
-  - name: Collision
-    clip: {fileID: 0}
+  - name: MenuEnter
+    clip: {fileID: 8300000, guid: 791ce48846dee2d4480ef336bb67644b, type: 3}
+  - name: MenuSelected
+    clip: {fileID: 8300000, guid: 1732cbc77e773f3438ea45f8a44bd3df, type: 3}
+  - name: Jumping
+    clip: {fileID: 8300000, guid: 708aa12827fbe0b42a7bfd6634853b3d, type: 3}
+  - name: ChargingJump
+    clip: {fileID: 8300000, guid: b117a76e536c1b7478a589b52696552f, type: 3}
+  - name: Impact
+    clip: {fileID: 8300000, guid: b05a264df32db38489bb3ae5af816ed5, type: 3}
+  - name: Dash
+    clip: {fileID: 8300000, guid: b48ee9b2de1b7014c942204ccc195620, type: 3}
+  - name: Shockwave
+    clip: {fileID: 8300000, guid: 808c4213413d98144b719c27248cdc0f, type: 3}
+  - name: LevelNumber
+    clip: {fileID: 8300000, guid: acd5961a3f0fe7842a7656eaa564957c, type: 3}
+  - name: Death
+    clip: {fileID: 8300000, guid: 4c6c1f4b0cb0a904ab2c5b34c4a0fe1e, type: 3}
+  - name: Finish
+    clip: {fileID: 8300000, guid: d00c6c13291bcd34b97127ea1c223c83, type: 3}
+  - name: Victory
+    clip: {fileID: 8300000, guid: e8e58a73ee6a8e745a44dac265638467, type: 3}
+  - name: Star
+    clip: {fileID: 8300000, guid: dbe39185262cac34b8a286026e1a0624, type: 3}
   musicSource: {fileID: 227129968949986958}
   sfxSource: {fileID: 1068476874638353411}

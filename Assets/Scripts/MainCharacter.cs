@@ -67,6 +67,8 @@ void OnCollisionEnter2D(Collision2D collision)
 {
     if (collision.gameObject.CompareTag("Wall"))
     {
+        AudioManager.instance.PlaySFX("Impact");
+        AudioManager.instance.PlaySFX("Shockwave");
         animator.SetTrigger("CancelFlip");
         StopPlayer();
         LastNormalVectorCollision = collision.contacts[0].normal;
@@ -88,6 +90,7 @@ void OnCollisionEnter2D(Collision2D collision)
 
     if (collision.gameObject.CompareTag("KillZone"))
     {
+        AudioManager.instance.PlaySFX("Death");
         Instantiate(DeathParticles, transform.position, Quaternion.identity);
         bCanStopLerp = true;
         PlayerCollider.enabled = false;
@@ -153,6 +156,7 @@ void Update()
     {
         
         spaceKeyHeldStartTime = Time.time;
+        AudioManager.instance.PlaySFX("ChargingJump");
         
     }
     if (Input.GetKey(KeyCode.Space) && bCanJump && bCanDash) 
@@ -199,7 +203,7 @@ void Update()
 void OnSpaceKeyPressed()
 
 {
-
+        AudioManager.instance.PlaySFX("Dash");
         timer.StartTimer();
         bCanDash = false;
         animator.SetTrigger("Jump");
@@ -236,6 +240,7 @@ void OnSpaceKeyPressed()
 
 void OnSpaceKeyHeld()
 {
+    AudioManager.instance.PlaySFX("Jumping");
     timer.StartTimer();
     animator.SetTrigger("Flip");
     Quaternion targetRotation = Quaternion.FromToRotation(Vector2.up, LastNormalVectorCollision);

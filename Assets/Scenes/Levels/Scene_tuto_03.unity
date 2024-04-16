@@ -2301,7 +2301,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 116138224631672949, guid: ca45ade7ceec8c64498e90007ec3a08e, type: 3}
       propertyPath: m_TargetCameraAlpha
-      value: 0.4
+      value: 0.49178132
       objectReference: {fileID: 0}
     - target: {fileID: 690698374879288679, guid: ca45ade7ceec8c64498e90007ec3a08e, type: 3}
       propertyPath: m_LocalPosition.x
@@ -2374,10 +2374,6 @@ PrefabInstance:
     - target: {fileID: 3284211327099804376, guid: ca45ade7ceec8c64498e90007ec3a08e, type: 3}
       propertyPath: m_LocalPosition.y
       value: -286.54
-      objectReference: {fileID: 0}
-    - target: {fileID: 4702292700515521889, guid: ca45ade7ceec8c64498e90007ec3a08e, type: 3}
-      propertyPath: m_Color.a
-      value: 0.7882353
       objectReference: {fileID: 0}
     - target: {fileID: 5114502872371195945, guid: ca45ade7ceec8c64498e90007ec3a08e, type: 3}
       propertyPath: levelName

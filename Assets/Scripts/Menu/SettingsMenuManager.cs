@@ -69,6 +69,7 @@ public class SettingsMenuManager : MonoBehaviour
                    
         if (heldDuration < pressThreshold)
         {
+            AudioManager.instance.PlaySFX("MenuSelected");
             ResetImageProgress();
             index = (index + 1) % 3;
             radialProgreesBar.index = index;
@@ -129,17 +130,20 @@ void ResetImageProgress()
 public void ToggleMusic()
 {
     Debug.Log("Toggle Music");
+    AudioManager.instance.PlaySFX("MenuEnter");
 }
 
 public void ToggleSFX()
 {
     Debug.Log("Toggle SFX");
+    AudioManager.instance.PlaySFX("MenuEnter");
 }
 
 public void Back()
 {
     MenuAnimator.SetTrigger("FadeOut");
     StartCoroutine(LoadMenu());
+    AudioManager.instance.PlaySFX("MenuEnter");
 }
 
 IEnumerator LoadMenu()

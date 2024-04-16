@@ -22,6 +22,7 @@ void Start() {
     {
         if (collision.gameObject.CompareTag("Player"))
         {
+            AudioManager.instance.PlaySFX("Finish");
             Instantiate(levelEndParticles, transform.position, Quaternion.identity);
             levelFinishedTime = timer.timer;
             SetupLevelScore();
@@ -31,6 +32,7 @@ void Start() {
     }
 void SetupLevelScore()
 {
+
     GameObject scoreCanva = GameObject.FindGameObjectWithTag("Score");
     GameObject childScoreCanva = scoreCanva.transform.GetChild(0).gameObject;
     
@@ -45,8 +47,8 @@ void SetupLevelScore()
 
     childScoreCanva.SetActive(true);
     score.SetupScore(levelFinishedTime);  
-
-    Invoke("LoadNextLevel", 6.0f);
+    
+    Invoke("LoadNextLevel", 8.0f);
     
 }
 

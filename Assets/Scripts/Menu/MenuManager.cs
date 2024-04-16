@@ -68,6 +68,7 @@ public class MenuManager : MonoBehaviour
                    
         if (heldDuration < pressThreshold)
         {
+            AudioManager.instance.PlaySFX("MenuSelected");
             ResetImageProgress();
             index = (index + 1) % 3;
             radialProgreesBar.index = index;
@@ -127,18 +128,21 @@ void ResetImageProgress()
 public void PlayButton()
 {
     SceneManager.LoadScene("Scene_tuto_01");
+    AudioManager.instance.PlaySFX("MenuEnter");
 }
 
 public void SettingsButton()
 {
     MenuAnimator.SetTrigger("FadeOut");
     StartCoroutine(LoadSettingsScene());
+    AudioManager.instance.PlaySFX("MenuEnter");
 
 }
 
 public void QuitButton()
 {
     Application.Quit();
+    AudioManager.instance.PlaySFX("MenuEnter");
 }
 
 IEnumerator LoadSettingsScene()

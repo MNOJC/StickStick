@@ -29,6 +29,7 @@ public class LevelNumber : MonoBehaviour
     {
         number.text = data.levelName;
         animator.SetTrigger("LevelName");
+        AudioManager.instance.PlaySFX("LevelNumber");
         Invoke("StartLevel",3f);
     }
 

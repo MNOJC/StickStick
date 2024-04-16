@@ -1758,7 +1758,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 116138224631672949, guid: ca45ade7ceec8c64498e90007ec3a08e, type: 3}
       propertyPath: m_TargetCameraAlpha
-      value: 0.4
+      value: 1.489489
       objectReference: {fileID: 0}
     - target: {fileID: 690698374879288679, guid: ca45ade7ceec8c64498e90007ec3a08e, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1832,10 +1832,6 @@ PrefabInstance:
       propertyPath: m_LocalPosition.y
       value: -286.44
       objectReference: {fileID: 0}
-    - target: {fileID: 4702292700515521889, guid: ca45ade7ceec8c64498e90007ec3a08e, type: 3}
-      propertyPath: m_Color.a
-      value: 0.7882353
-      objectReference: {fileID: 0}
     - target: {fileID: 5114502872371195945, guid: ca45ade7ceec8c64498e90007ec3a08e, type: 3}
       propertyPath: levelName
       value: Level - 2
@@ -1851,6 +1847,10 @@ PrefabInstance:
     - target: {fileID: 5114502872371195945, guid: ca45ade7ceec8c64498e90007ec3a08e, type: 3}
       propertyPath: timeSecondStar
       value: 30
+      objectReference: {fileID: 0}
+    - target: {fileID: 7102155599124157129, guid: ca45ade7ceec8c64498e90007ec3a08e, type: 3}
+      propertyPath: m_Color.a
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7766485255399161956, guid: ca45ade7ceec8c64498e90007ec3a08e, type: 3}
       propertyPath: m_IsActive
@@ -1889,7 +1889,8 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
-    m_RemovedGameObjects: []
+    m_RemovedGameObjects:
+    - {fileID: 8807793291606382837, guid: ca45ade7ceec8c64498e90007ec3a08e, type: 3}
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ca45ade7ceec8c64498e90007ec3a08e, type: 3}

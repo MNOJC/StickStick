@@ -32,19 +32,20 @@ public class Score : MonoBehaviour
 
     public void SetupScore(float timeFinishedLevel)
     {
+        StartCoroutine(VictorySound());
         animator.SetTrigger("Score");
 
         if (timeFinishedLevel <= timeFirstStar)
         {
-            StartCoroutine(WaitForSeconds(1f, FirstStarImage, "FirstStar"));
+            StartCoroutine(WaitForSeconds(3f, FirstStarImage, "FirstStar"));
         }
          if (timeFinishedLevel <= timeSecondStar)
         {
-            StartCoroutine(WaitForSeconds(2f, SecondStarImage, "SecondStar"));
+            StartCoroutine(WaitForSeconds(4f, SecondStarImage, "SecondStar"));
         }
          if (timeFinishedLevel <= timeThirdStar)
         {
-            StartCoroutine(WaitForSeconds(3f, ThirdStarImage, "ThirdStar"));
+            StartCoroutine(WaitForSeconds(5f, ThirdStarImage, "ThirdStar"));
         }
 
         FirstText.text = "< " + timeFirstStar.ToString() + "s";
@@ -61,6 +62,13 @@ public class Score : MonoBehaviour
             
             yield return new WaitForSeconds(0.7f);
             Instantiate(StarParticle, starImage.transform.position, Quaternion.identity);
+            AudioManager.instance.PlaySFX("Star");
 
+        }
+
+        IEnumerator VictorySound()
+        {
+            yield return new WaitForSeconds(1.0f);
+            AudioManager.instance.PlaySFX("Victory");
         }
 }   

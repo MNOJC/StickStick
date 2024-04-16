@@ -489,6 +489,8 @@ MonoBehaviour:
   defaultOrthoSize: 9
   zoomSpeed: 10
   PlayerCollider: {fileID: 390804439420031879}
+  bCanDash: 0
+  bCanJump: 0
   bGameStart: 0
 --- !u!58 &390804439420031879
 CircleCollider2D:
@@ -535,6 +537,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6107055090990253606}
   - component: {fileID: 3390897063704398165}
+  - component: {fileID: 510917493769917169}
   m_Layer: 2
   m_Name: P_Anim
   m_TagString: Untagged
@@ -579,3 +582,15 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &510917493769917169
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6107055090990253607}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a7f2ba4c286900341aff25ac2b2fd0bb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
