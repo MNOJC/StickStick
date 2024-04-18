@@ -2930,7 +2930,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 116138224631672949, guid: ca45ade7ceec8c64498e90007ec3a08e, type: 3}
       propertyPath: m_TargetCameraAlpha
-      value: 0.4
+      value: 1.0817065
       objectReference: {fileID: 0}
     - target: {fileID: 690698374879288679, guid: ca45ade7ceec8c64498e90007ec3a08e, type: 3}
       propertyPath: m_LocalPosition.x
@@ -2986,11 +2986,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3116557979675021918, guid: ca45ade7ceec8c64498e90007ec3a08e, type: 3}
       propertyPath: orthographic size
-      value: 9
+      value: 8.804603
       objectReference: {fileID: 0}
     - target: {fileID: 3276746279121364212, guid: ca45ade7ceec8c64498e90007ec3a08e, type: 3}
       propertyPath: m_Lens.OrthographicSize
-      value: 9
+      value: 8.804603
       objectReference: {fileID: 0}
     - target: {fileID: 3284211327099804376, guid: ca45ade7ceec8c64498e90007ec3a08e, type: 3}
       propertyPath: m_LocalPosition.x
