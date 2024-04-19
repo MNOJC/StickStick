@@ -44,7 +44,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 1
-  m_Volume: 0.6
+  m_Volume: 0.5
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -172,7 +172,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 1
-  m_Volume: 1
+  m_Volume: 0.7
   m_Pitch: 1
   Loop: 1
   Mute: 0
@@ -461,5 +461,7 @@ MonoBehaviour:
     clip: {fileID: 8300000, guid: e8e58a73ee6a8e745a44dac265638467, type: 3}
   - name: Star
     clip: {fileID: 8300000, guid: dbe39185262cac34b8a286026e1a0624, type: 3}
+  - name: Collectible
+    clip: {fileID: 8300000, guid: e9f496411c7c59849b5791a3f33e43f4, type: 3}
   musicSource: {fileID: 227129968949986958}
   sfxSource: {fileID: 1068476874638353411}

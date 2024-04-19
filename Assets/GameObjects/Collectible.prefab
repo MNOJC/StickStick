@@ -30,7 +30,7 @@ Transform:
   m_GameObject: {fileID: 5425592789666068608}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -0.48503044, y: -0.52243966, z: 0.6148709}
-  m_LocalScale: {x: 0.4, y: 0.4, z: 0.4}
+  m_LocalScale: {x: 0.6, y: 0.6, z: 0.6}
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 0}
@@ -77,8 +77,8 @@ SpriteRenderer:
   m_SortingLayerID: -1955035495
   m_SortingLayer: 1
   m_SortingOrder: 1
-  m_Sprite: {fileID: 21300000, guid: 8e288d4ee53fae24b9f04ce1928c9c99, type: 3}
-  m_Color: {r: 0, g: 1, b: 0.84524965, a: 1}
+  m_Sprite: {fileID: 21300000, guid: 75fd5ac0a03f3484f922c24e7619e420, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -120,9 +120,9 @@ CircleCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.0030866265, y: 0}
+  m_Offset: {x: -0.088633195, y: 0.09804586}
   serializedVersion: 2
-  m_Radius: 1.1079453
+  m_Radius: 1.4685029
 --- !u!114 &8532813137668169050
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -151,8 +151,8 @@ MonoBehaviour:
   m_LightType: 3
   m_BlendStyleIndex: 0
   m_FalloffIntensity: 0.5
-  m_Color: {r: 0.575233, g: 1, b: 0, a: 1}
-  m_Intensity: 6
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Intensity: 1.2
   m_LightVolumeIntensity: 1
   m_LightVolumeIntensityEnabled: 0
   m_ApplyToSortingLayers: 000000009986788b21bc8c18

@@ -3,7 +3,6 @@ using UnityEngine;
 public class LevelSelector : MonoBehaviour
 {
     [SerializeField] private GameObject[] levels;
-    //[SerializeField] private int[] starsPerLevel = new int[10]; // Tableau pour stocker les étoiles gagnées pour chaque niveau (index 0 à 9)
     private SavedSingleton Singleton;
     
 
@@ -30,14 +29,10 @@ public class LevelSelector : MonoBehaviour
 
     public void UpdateLevelState(int levelIndex, int starsNumber)
     {
-        // Vérifier si l'index de niveau est valide
         if (levelIndex >= 0 && levelIndex < Singleton.starsPerLevel.Length)
         {
-            // Assurer que le nombre d'étoiles est compris entre 0 et 3
             Singleton.starsPerLevel[levelIndex] = Mathf.Clamp(starsNumber, 0, 3);
-            // Sauvegarder la progression mise à jour
             SaveProgress();
-            // Mettre à jour l'affichage des étoiles
         }
         else
         {
@@ -45,11 +40,9 @@ public class LevelSelector : MonoBehaviour
         }
     }
 
-    void SaveProgress()
+    public void SaveProgress()
     {
-        // Convertir le tableau en chaîne
         string data = string.Join(",", Singleton.starsPerLevel);
-        // Sauvegarder la chaîne dans PlayerPrefs
         PlayerPrefs.SetString("LevelProgress", data);
         PlayerPrefs.Save();
     }
@@ -58,9 +51,7 @@ public class LevelSelector : MonoBehaviour
     {
         if (PlayerPrefs.HasKey("LevelProgress"))
         {
-            // Charger la chaîne depuis PlayerPrefs
             string data = PlayerPrefs.GetString("LevelProgress");
-            // Convertir la chaîne en tableau d'entiers
             string[] values = data.Split(',');
             for (int i = 0; i < Singleton.starsPerLevel.Length && i < values.Length; i++)
             {
