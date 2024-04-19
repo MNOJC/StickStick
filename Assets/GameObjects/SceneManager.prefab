@@ -53,3 +53,6 @@ MonoBehaviour:
   - Scene_06
   - Scene_07
   - Scene_08
+  - Scene_09
+  - Scene_10
+  currentLevelIndex: 0

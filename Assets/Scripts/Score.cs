@@ -79,7 +79,6 @@ public class Score : MonoBehaviour
         {
             StartCoroutine(WaitForSeconds(3f, FirstStarImage, "FirstStar"));
             SavedSingleton.instance.UpdateStars(LevelManager.currentLevelIndex, 1);
-            Debug.Log(LevelManager.instance.currentLevelIndex);
         }
          if (timeFinishedLevel <= timeSecondStar)
         {

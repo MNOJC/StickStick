@@ -38,7 +38,7 @@ void Start()
         }
         else
         {
-            SceneManager.LoadScene("MainMenu");
+            SceneManager.LoadScene("MenuScene");
             currentLevelIndex = 0;
         }
     }

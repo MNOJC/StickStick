@@ -24,9 +24,7 @@ public class SavedSingleton : MonoBehaviour
     {
         if (PlayerPrefs.HasKey("LevelProgress"))
         {
-            // Charger la chaîne depuis PlayerPrefs
             string data = PlayerPrefs.GetString("LevelProgress");
-            // Convertir la chaîne en tableau d'entiers
             string[] values = data.Split(',');
             for (int i = 0; i < starsPerLevel.Length && i < values.Length; i++)
             {
