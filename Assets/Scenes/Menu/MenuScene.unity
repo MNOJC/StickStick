@@ -2465,6 +2465,18 @@ PrefabInstance:
       propertyPath: m_Name
       value: AudioManager
       objectReference: {fileID: 0}
+    - target: {fileID: 4489238042657277309, guid: 326d7298d99d58f43be9bdb834267f7b, type: 3}
+      propertyPath: sfxSounds.Array.size
+      value: 14
+      objectReference: {fileID: 0}
+    - target: {fileID: 4489238042657277309, guid: 326d7298d99d58f43be9bdb834267f7b, type: 3}
+      propertyPath: sfxSounds.Array.data[13].clip
+      value: 
+      objectReference: {fileID: 8300000, guid: e9f496411c7c59849b5791a3f33e43f4, type: 3}
+    - target: {fileID: 4489238042657277309, guid: 326d7298d99d58f43be9bdb834267f7b, type: 3}
+      propertyPath: sfxSounds.Array.data[13].name
+      value: Collectible
+      objectReference: {fileID: 0}
     - target: {fileID: 4928956428192072874, guid: 326d7298d99d58f43be9bdb834267f7b, type: 3}
       propertyPath: m_RootOrder
       value: 7

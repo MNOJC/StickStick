@@ -240,7 +240,6 @@ public class SelectorMenuManager : MonoBehaviour
                     LoadScene("Scene_tuto_02");
                     break;
                 case 2:
-                    Debug.Log("Level 3aaaaaaaaaaaaa");
                     LevelManager.instance.currentLevelIndex = 2;
                     LoadScene("Scene_tuto_03");  
                     break;
