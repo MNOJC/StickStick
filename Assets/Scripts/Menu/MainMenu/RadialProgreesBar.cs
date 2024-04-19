@@ -6,6 +6,7 @@ using UnityEngine;
 public class RadialProgreesBar : MonoBehaviour
 {
     [SerializeField] public Image playImage;
+    [SerializeField] public Image SelectorImage;
     [SerializeField] public Image settingsImage;
     [SerializeField] public Image quitImage;
     [SerializeField] private float fillSpeed = 0.5f;
@@ -22,6 +23,7 @@ public class RadialProgreesBar : MonoBehaviour
         playImage.fillAmount = 0;
         settingsImage.fillAmount = 0;
         quitImage.fillAmount = 0;
+        SelectorImage.fillAmount = 0;
     }
     void Update()
     {
@@ -36,11 +38,14 @@ public class RadialProgreesBar : MonoBehaviour
                     case 0:
                         playImage.fillAmount = currentValue / 100;
                         break;
-                    case 1:
+                    case 2:
                         settingsImage.fillAmount = currentValue / 100;
                         break;
-                    case 2:
+                    case 3:
                         quitImage.fillAmount = currentValue / 100;
+                        break;
+                    case 1:
+                        SelectorImage.fillAmount = currentValue / 100;
                         break;
                 }
             } else if (currentValue >= 100)
@@ -51,12 +56,16 @@ public class RadialProgreesBar : MonoBehaviour
                         menuManager.PlayButton();
                         currentValue = 0;
                         break;
-                    case 1:
+                    case 2:
                          menuManager.SettingsButton();
                          currentValue = 0;
                         break;
-                    case 2:
+                    case 3:
                         menuManager.QuitButton();
+                        currentValue = 0;
+                        break;
+                    case 1:
+                        menuManager.SelectorButton();
                         currentValue = 0;
                         break;
                 }

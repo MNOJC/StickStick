@@ -17,11 +17,13 @@ public class MenuManager : MonoBehaviour
     [SerializeField] private Button playButton;
     [SerializeField] private Button settingsButton;
     [SerializeField] private Button quitButton;
+    [SerializeField] private Button selectorButton;
     [SerializeField] private RadialProgreesBar radialProgreesBar;
     [SerializeField] private Animator MenuAnimator;
     private Animator PlayButtonAnimator;
     private Animator SettingsButtonAnimator;
     private Animator QuitButtonAnimator;
+    private Animator SelectorButtonAnimator;
 
     private void Start()
     {  
@@ -29,6 +31,7 @@ public class MenuManager : MonoBehaviour
         SettingsButtonAnimator = settingsButton.GetComponent<Animator>();
         QuitButtonAnimator = quitButton.GetComponent<Animator>();
         PlayButtonAnimator = playButton.GetComponent<Animator>();
+        SelectorButtonAnimator = selectorButton.GetComponent<Animator>();
         if (PlayButtonAnimator != null)
         {
             PlayButtonAnimator.SetBool("Selected", true);
@@ -70,7 +73,7 @@ public class MenuManager : MonoBehaviour
         {
             AudioManager.instance.PlaySFX("MenuSelected");
             ResetImageProgress();
-            index = (index + 1) % 3;
+            index = (index + 1) % 4;
             radialProgreesBar.index = index;
             Debug.Log("Index: " + index);
             switch (index)
@@ -80,20 +83,30 @@ public class MenuManager : MonoBehaviour
                         PlayButtonAnimator.SetBool("Selected", true);
                         SettingsButtonAnimator.SetBool("Selected", false);
                         QuitButtonAnimator.SetBool("Selected", false);
+                        SelectorButtonAnimator.SetBool("Selected", false);
                     
                     break;
-                case 1:
+                case 2:
 
                         SettingsButtonAnimator.SetBool("Selected", true);
                         PlayButtonAnimator.SetBool("Selected", false);
                         QuitButtonAnimator.SetBool("Selected", false);
+                        SelectorButtonAnimator.SetBool("Selected", false);
 
                         break;
-                case 2:
+                case 3:
 
                         QuitButtonAnimator.SetBool("Selected", true);
                         PlayButtonAnimator.SetBool("Selected", false);
                         SettingsButtonAnimator.SetBool("Selected", false);
+                        SelectorButtonAnimator.SetBool("Selected", false);
+                    break;
+
+                case 1:
+                    SelectorButtonAnimator.SetBool("Selected", true);
+                    PlayButtonAnimator.SetBool("Selected", false);
+                    SettingsButtonAnimator.SetBool("Selected", false);
+                    QuitButtonAnimator.SetBool("Selected", false);
                     break;
             }
         }
@@ -104,12 +117,16 @@ public class MenuManager : MonoBehaviour
                 case 0:
                     PlayButton();
                     break;
-                case 1:
+                case 2:
                     SettingsButton();
                     break;
-                case 2:
+                case 3:
                     QuitButton();   
                     break;
+                case 1:
+                    SelectorButton();
+                    break;
+
             }
         }   
         else if (heldDuration < holdThreshold)
@@ -124,6 +141,7 @@ void ResetImageProgress()
     radialProgreesBar.playImage.fillAmount = 0;
     radialProgreesBar.settingsImage.fillAmount = 0;
     radialProgreesBar.quitImage.fillAmount = 0;
+    radialProgreesBar.SelectorImage.fillAmount = 0;
 }
 public void PlayButton()
 {
@@ -142,6 +160,13 @@ public void SettingsButton()
 public void QuitButton()
 {
     Application.Quit();
+    AudioManager.instance.PlaySFX("MenuEnter");
+}
+
+public void SelectorButton()
+{
+    MenuAnimator.SetTrigger("FadeOut");
+    SceneManager.LoadScene("LevelSelectorScene");
     AudioManager.instance.PlaySFX("MenuEnter");
 }
 

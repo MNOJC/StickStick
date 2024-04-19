@@ -7,12 +7,12 @@ public class LevelManager : MonoBehaviour
 {
     public string[] levelNames;
     private MainCharacter mainCharacter;
-    private static LevelManager instance;
-    private int currentLevelIndex = 0;
+    public static LevelManager instance;
+    public int currentLevelIndex = 0;
 
     void Awake()
     {
-        mainCharacter = GameObject.Find("Player").GetComponent<MainCharacter>();
+        //mainCharacter = GameObject.Find("Player").GetComponent<MainCharacter>();
     }
 void Start()
 {
@@ -38,7 +38,8 @@ void Start()
         }
         else
         {
-            Debug.Log("Tous les niveaux ont été terminés!");
+            SceneManager.LoadScene("MainMenu");
+            currentLevelIndex = 0;
         }
     }
 
